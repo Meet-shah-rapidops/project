@@ -1,0 +1,47 @@
+// .bg-image{
+//     background: url("../images/bgLogin.jpg");
+//     // filter: blur(1px);
+//     // background-position: center;
+//     height: 100%; 
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     // height: 40.8rem;
+//     padding-top: 10%;
+// }
+.LoginPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 10%;
+    
+     
+
+    .loginName{
+        // color: white;
+        font-size: 190%;
+    }
+    .email{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background: transparent;
+        // padding: 35px;
+        // color: white;
+        
+    }
+    .password{
+        margin-top: 30px;
+        margin-bottom: 20px;
+        background: transparent;
+        // padding: 35px;
+        // color: white;
+
+    }
+    .loginBtn{
+        margin-top: 40px;
+        margin-bottom: 20px;
+        border-radius: 20px;
+        // background-color: lightblue;
+    }
+}
