@@ -12,8 +12,9 @@ import {
     EuiOverlayMask,
     EuiFieldText,
     EuiFieldPassword,
-    EuiIcon
-   
+    EuiCard,
+    EuiFlexGroup,
+    EuiFlexItem
   } from '@elastic/eui';
 
 class HomePageComponent extends Component {
@@ -87,13 +88,43 @@ class HomePageComponent extends Component {
         return (
             <div className="homepage">
                 {/* <h1>Home Page</h1> */}
-                <div className='modals'>
-                    <EuiButton className='mdbtn' onClick={this.showModal}>Admin Login</EuiButton>
-                    {modal}
-                    <EuiButton className='mdbtn' onClick={this.showModal}>Faculty Login</EuiButton>
-                    {modal}
-                    <EuiButton className='mdbtn' onClick={this.showModal}>Student Login</EuiButton>
-                    {modal}
+                <div className='modals'>       
+                  <EuiFlexGroup gutterSize="l">
+                      <EuiFlexItem className='flex'>
+                        <EuiCard
+                        className='card'
+                        style={{width: '340px'}}
+                          layout="horizontal"
+                          // icon={<EuiIcon size="xl" type={'logoBeats'} />}
+                          title={'Admin'}
+                          description="This card adds uses an 'xl' size icon which works well in a horizontal layout."
+                          onClick={this.showModal}
+                        /> {modal}
+                      </EuiFlexItem>
+                      <EuiFlexItem className='flex'>
+                        <EuiCard
+                        className='card'
+                        style={{width: '340px'}}
+                          layout="horizontal"
+                          // icon={<EuiIcon size="l" type={'logoCloud'} />}
+                          titleSize="xs"
+                          title={'Faculty'}
+                          description="This card uses an 'l' size icon but also shrinks the 'titleSize' to 'xs'."
+                          onClick={this.showModal}
+                        />{modal}
+                      </EuiFlexItem>
+                      <EuiFlexItem className='flex'>
+                        <EuiCard
+                        className='card'
+                        style={{width: '340px'}}
+                          layout="horizontal"
+                          title={'Student'}
+                          description="Example of a card's description. Stick to one or two sentences."
+                          onClick={this.showModal}
+                          href="#"
+                        />{modal}
+                      </EuiFlexItem>
+                    </EuiFlexGroup>
                 </div>
             </div>
         )
