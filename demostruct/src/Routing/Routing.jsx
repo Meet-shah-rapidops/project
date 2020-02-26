@@ -6,8 +6,7 @@ import SignupPageComponent from '../components/SignupPageComponent/SignupPageCom
 import HomePageComponent from '../components/HomePageComponent/HomePageComponent';
 import AdminDashboardComponent from '../components/AdminDashboardComponent/AdminDashboardComponent';
 import StudentComponent from '../components/StudentComponent/StudentComponent';
-import SideBarComponent from '../components/SideBarComponent/SideBarComponent';
-import NavbarComponent from '../components/NavbarComponent/NavbarComponent';
+import SubjectComponent from '../components/SubjectComponent/SubjectComponent';
 
 const Routing = () => {
     return (
@@ -28,13 +27,9 @@ const Routing = () => {
             <Route exact path="/student">
                 <StudentComponent />
             </Route>
-            <Route exact path="/sidebar">
-                <SideBarComponent />
+            <Route exact path="/subject">
+                <SubjectComponent />
             </Route>
-            <Route exact path="/navbar">
-                <NavbarComponent />
-            </Route>
-         
         </Switch>
     )
 }

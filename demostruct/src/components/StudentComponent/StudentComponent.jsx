@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import SideBarComponent from "../SideBarComponent/SideBarComponent";
-import NavbarComponent from "../NavbarComponent/NavbarComponent";
 
 import {
   EuiBadge,
@@ -30,21 +28,7 @@ import {
   EuiTableRowCellCheckbox,
   EuiTableSortMobile,
   EuiTableHeaderMobile,
-  // EuiCard,
-  // EuiFlexGroup,
-  // EuiFlexItem,
-  // EuiButton,
-  // EuiIcon,
-  EuiPage,
-  EuiPageBody,
-  // EuiPageContent,
   EuiPageContentBody,
-  // EuiPageContentHeader,
-  EuiPageHeaderSection,
-  EuiPageSideBar,
-  EuiTitle,
-  EuiPageHeader,
-  // EuiPageContentHeaderSection
 } from '@elastic/eui';
 
 import {
@@ -709,29 +693,6 @@ class StudentComponent extends Component {
 
     return (
       <div className='studentTable'>
-
-        <EuiPage>
-            <EuiPageSideBar><SideBarComponent /></EuiPageSideBar>
-            <EuiPageBody>
-              <EuiPageHeader>
-                <EuiPageHeaderSection>
-                  <EuiTitle size="l">
-                    <h1>Page title</h1>
-                  </EuiTitle>
-                </EuiPageHeaderSection>
-                <EuiPageHeaderSection><NavbarComponent /></EuiPageHeaderSection>
-            </EuiPageHeader>
-              {/* <EuiPageContent>
-                <EuiPageContentHeader>
-                  <EuiPageContentHeaderSection>
-                    <EuiTitle>
-                      <h2>Content title</h2>
-                    </EuiTitle>
-                  </EuiPageContentHeaderSection> */}
-                  {/* <EuiPageContentHeaderSection>
-                    Content abilities
-                  </EuiPageContentHeaderSection> */}
-                {/* </EuiPageContentHeader> */} 
                 <EuiPageContentBody>
 
                 <EuiFlexGroup gutterSize="m">
@@ -776,9 +737,6 @@ class StudentComponent extends Component {
                 />
 
                 </EuiPageContentBody>
-              {/* </EuiPageContent> */}
-            </EuiPageBody>
-          </EuiPage>
       </div>
     );
   }
