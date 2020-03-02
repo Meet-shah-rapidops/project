@@ -1,37 +1,36 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 
-import LoginPageComponent from '../components/LoginPageComponent/LoginPageComponent';
-import SignupPageComponent from '../components/SignupPageComponent/SignupPageComponent';
-import HomePageComponent from '../components/HomePageComponent/HomePageComponent';
-import AdminDashboardComponent from '../components/AdminDashboardComponent/AdminDashboardComponent';
-import StudentComponent from '../components/StudentComponent/StudentComponent';
-import SubjectComponent from '../components/SubjectComponent/SubjectComponent';
+import LoginPageComponent from '../components/LoginPageComponent';
+// import AdminDashboardComponent from '../components/AdminComponents/AdminDashboradComponent';
+// import StudentTableComponent from '../components/AdminComponents/StudentTableComponent';
+// import SubjectsComponent from '../components/AdminComponents/SubjectsComponent';
+import AdminRoutingComponent from '../components/AdminComponents/AdminRoutingComponent';
 
 const Routing = () => {
-    return (
-        
-        <Switch>
-            <Route exact path='/'>
-                <HomePageComponent />
-            </Route>
-            <Route exact path="/login">
-                <LoginPageComponent />
-            </Route>
-            <Route exact path="/signup">
-                <SignupPageComponent />
-            </Route>
-            <Route exact path="/adminDashboard">
-                <AdminDashboardComponent />
-            </Route>
-            <Route exact path="/student">
-                <StudentComponent />
-            </Route>
-            <Route exact path="/subject">
-                <SubjectComponent />
-            </Route>
-        </Switch>
-    )
-}
+  return (
+    <Switch>
+      <Route exact path="/">
+        <LoginPageComponent />
+      </Route>
+      <Route exact path="/login">
+        <LoginPageComponent />
+      </Route>
+
+      <AdminRoutingComponent />
+
+      {/* Admin Routing
+      <Route exact path="/adminDashboard">
+        <AdminDashboardComponent />
+      </Route>
+      <Route exact path="/adminDashboard/student">
+        <StudentTableComponent />
+      </Route>
+      <Route exact path="/adminDashboard/subject">
+        <SubjectsComponent />
+      </Route> */}
+    </Switch>
+  );
+};
 
 export default Routing;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 import {
   EuiBadge,
@@ -30,276 +30,268 @@ import {
   EuiTableHeaderMobile,
   EuiPageContentBody,
   EuiCard
-} from '@elastic/eui';
+} from "@elastic/eui";
 
 import {
   LEFT_ALIGNMENT,
   RIGHT_ALIGNMENT,
   Pager,
-  SortableProperties,
-} from '@elastic/eui/lib/services';
+  SortableProperties
+} from "@elastic/eui/lib/services";
 
 // import { isFunction } from '../../../../../src/services/predicate';
 
-class SubjectComponent extends Component {
+class DataTableComponent extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       itemIdToSelectedMap: {},
       itemIdToOpenActionsPopoverMap: {},
-      sortedColumn: 'StudentId',
-      itemsPerPage: 10,
+      sortedColumn: "StudentId",
+      itemsPerPage: 10
     };
 
     this.items = [
       {
         id: 0,
-        StudentId: 'D17ce163',
-        Name: 'Rohan',
-        type: 'user',
-        dateCreated: 'Tue Dec 28 2016',
+        StudentId: "D17ce163",
+        Name: "Rohan",
+        type: "user",
+        dateCreated: "Tue Dec 28 2016",
         magnitude: 1,
-        health: <EuiHealth color="success">Healthy</EuiHealth>,
+        health: <EuiHealth color="success">Healthy</EuiHealth>
       },
       {
         id: 1,
         StudentId: {
-          value: 'D17ce164',
-          truncateText: true,
+          value: "D17ce164",
+          truncateText: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 01 2016',
+        type: "user",
+        dateCreated: "Tue Dec 01 2016",
         magnitude: 1,
-        health: <EuiHealth color="success">Healthy</EuiHealth>,
+        health: <EuiHealth color="success">Healthy</EuiHealth>
       },
       {
         id: 2,
-        StudentId: (
-          <span>
-            A very long line
-          </span>
-        ),
-        type: 'user',
+        StudentId: <span>A very long line</span>,
+        type: "user",
         dateCreated: (
           <span>
             Tue Dec 01 2016 &nbsp; <EuiBadge color="secondary">New!</EuiBadge>
           </span>
         ),
         magnitude: 10,
-        health: <EuiHealth color="warning">Warning</EuiHealth>,
+        health: <EuiHealth color="warning">Warning</EuiHealth>
       },
       {
         id: 3,
         StudentId: {
-          value: (
-            <span>
-              A very long line
-            </span>
-          ),
-          truncateText: true,
+          value: <span>A very long line</span>,
+          truncateText: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 16 2016',
+        type: "user",
+        dateCreated: "Tue Dec 16 2016",
         magnitude: 100,
-        health: <EuiHealth color="success">Healthy</EuiHealth>,
+        health: <EuiHealth color="success">Healthy</EuiHealth>
       },
       {
         id: 4,
         StudentId: {
-          value: 'Dog',
-          isLink: true,
+          value: "Dog",
+          isLink: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 13 2016',
+        type: "user",
+        dateCreated: "Tue Dec 13 2016",
         magnitude: 1000,
-        health: <EuiHealth color="warning">Warning</EuiHealth>,
+        health: <EuiHealth color="warning">Warning</EuiHealth>
       },
       {
         id: 5,
         StudentId: {
-          value: 'Dragon',
-          isLink: true,
+          value: "Dragon",
+          isLink: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 11 2016',
+        type: "user",
+        dateCreated: "Tue Dec 11 2016",
         magnitude: 10000,
-        health: <EuiHealth color="success">Healthy</EuiHealth>,
+        health: <EuiHealth color="success">Healthy</EuiHealth>
       },
       {
         id: 6,
         StudentId: {
-          value: 'Bear',
-          isLink: true,
+          value: "Bear",
+          isLink: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 11 2016',
+        type: "user",
+        dateCreated: "Tue Dec 11 2016",
         magnitude: 10000,
-        health: <EuiHealth color="danger">Danger</EuiHealth>,
+        health: <EuiHealth color="danger">Danger</EuiHealth>
       },
       {
         id: 7,
         StudentId: {
-          value: 'Dinosaur',
-          isLink: true,
+          value: "Dinosaur",
+          isLink: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 11 2016',
+        type: "user",
+        dateCreated: "Tue Dec 11 2016",
         magnitude: 10000,
-        health: <EuiHealth color="warning">Warning</EuiHealth>,
+        health: <EuiHealth color="warning">Warning</EuiHealth>
       },
       {
         id: 8,
         StudentId: {
-          value: 'Spider',
-          isLink: true,
+          value: "Spider",
+          isLink: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 11 2016',
+        type: "user",
+        dateCreated: "Tue Dec 11 2016",
         magnitude: 10000,
-        health: <EuiHealth color="warning">Warning</EuiHealth>,
+        health: <EuiHealth color="warning">Warning</EuiHealth>
       },
       {
         id: 9,
         StudentId: {
-          value: 'Bugbear',
-          isLink: true,
+          value: "Bugbear",
+          isLink: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 11 2016',
+        type: "user",
+        dateCreated: "Tue Dec 11 2016",
         magnitude: 10000,
-        health: <EuiHealth color="success">Healthy</EuiHealth>,
+        health: <EuiHealth color="success">Healthy</EuiHealth>
       },
       {
         id: 10,
         StudentId: {
-          value: 'Bear',
-          isLink: true,
+          value: "Bear",
+          isLink: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 11 2016',
+        type: "user",
+        dateCreated: "Tue Dec 11 2016",
         magnitude: 10000,
-        health: <EuiHealth color="danger">Danger</EuiHealth>,
+        health: <EuiHealth color="danger">Danger</EuiHealth>
       },
       {
         id: 11,
         StudentId: {
-          value: 'Dinosaur',
-          isLink: true,
+          value: "Dinosaur",
+          isLink: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 11 2016',
+        type: "user",
+        dateCreated: "Tue Dec 11 2016",
         magnitude: 10000,
-        health: <EuiHealth color="warning">Warning</EuiHealth>,
+        health: <EuiHealth color="warning">Warning</EuiHealth>
       },
       {
         id: 12,
         StudentId: {
-          value: 'Spider',
-          isLink: true,
+          value: "Spider",
+          isLink: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 11 2016',
+        type: "user",
+        dateCreated: "Tue Dec 11 2016",
         magnitude: 10000,
-        health: <EuiHealth color="success">Healthy</EuiHealth>,
+        health: <EuiHealth color="success">Healthy</EuiHealth>
       },
       {
         id: 13,
         StudentId: {
-          value: 'Bugbear',
-          isLink: true,
+          value: "Bugbear",
+          isLink: true
         },
-        type: 'user',
-        dateCreated: 'Tue Dec 11 2016',
+        type: "user",
+        dateCreated: "Tue Dec 11 2016",
         magnitude: 10000,
-        health: <EuiHealth color="danger">Danger</EuiHealth>,
-      },
+        health: <EuiHealth color="danger">Danger</EuiHealth>
+      }
     ];
 
     this.sortableProperties = new SortableProperties(
       [
         {
-          name: 'StudentId',
+          name: "StudentId",
           getValue: item => item.StudentId.toLowerCase(),
-          isAscending: true,
+          isAscending: true
         },
         {
-          name: 'dateCreated',
+          name: "dateCreated",
           getValue: item => item.dateCreated.toLowerCase(),
-          isAscending: true,
+          isAscending: true
         },
         {
-          name: 'magnitude',
+          name: "magnitude",
           getValue: item => item.magnitude.toLowerCase(),
-          isAscending: true,
-        },
+          isAscending: true
+        }
       ],
       this.state.sortedColumn
     );
 
     this.columns = [
       {
-        id: 'checkbox',
+        id: "checkbox",
         isCheckbox: true,
         textOnly: false,
-        width: '32px',
+        width: "32px"
       },
       {
-        id: 'type',
-        label: '',
+        id: "type",
+        label: "",
         alignment: LEFT_ALIGNMENT,
-        width: '24px',
+        width: "24px",
         cellProvider: cell => <EuiIcon type={cell} size="m" />,
         mobileOptions: {
-          show: false,
-        },
+          show: false
+        }
       },
       {
-        id: 'StudentId',
-        label: 'StudentId',
+        id: "StudentId",
+        label: "StudentId",
         footer: <em>StudentId</em>,
         alignment: LEFT_ALIGNMENT,
         isSortable: true,
         mobileOptions: {
-          show: false,
-        },
+          show: false
+        }
       },
       {
-        id: 'StudentId_type',
-        label: 'StudentId',
+        id: "StudentId_type",
+        label: "StudentId",
         mobileOptions: {
           only: true,
           header: false,
           enlarge: true,
-          fullWidth: true,
+          fullWidth: true
         },
         render: (StudentId, item) => (
           <span>
             <EuiIcon
               type={item.type}
               size="m"
-              style={{ verticalAlign: 'text-top' }}
-            />{' '}
+              style={{ verticalAlign: "text-top" }}
+            />{" "}
             {StudentId}
           </span>
-        ),
+        )
       },
       {
-        id: 'health',
-        label: 'Health',
-        footer: '',
+        id: "health",
+        label: "Health",
+        footer: "",
+        alignment: LEFT_ALIGNMENT
+      },
+      {
+        id: "dateCreated",
+        label: "Date created",
+        footer: "Date created",
         alignment: LEFT_ALIGNMENT,
+        isSortable: true
       },
       {
-        id: 'dateCreated',
-        label: 'Date created',
-        footer: 'Date created',
-        alignment: LEFT_ALIGNMENT,
-        isSortable: true,
-      },
-      {
-        id: 'magnitude',
-        label: 'Orders of magnitude',
+        id: "magnitude",
+        label: "Orders of magnitude",
         footer: ({ items, pagination }) => {
           const { pageIndex, pageSize } = pagination;
           const startIndex = pageIndex * pageSize;
@@ -314,15 +306,15 @@ class SubjectComponent extends Component {
           );
         },
         alignment: RIGHT_ALIGNMENT,
-        isSortable: true,
+        isSortable: true
       },
       {
-        id: 'actions',
-        label: '',
+        id: "actions",
+        label: "",
         alignment: RIGHT_ALIGNMENT,
         isActionsPopover: true,
-        width: '50px',
-      },
+        width: "50px"
+      }
     ];
 
     this.pager = new Pager(this.items.length, this.state.itemsPerPage);
@@ -335,7 +327,7 @@ class SubjectComponent extends Component {
     this.setState({
       itemsPerPage,
       firstItemIndex: this.pager.getFirstItemIndex(),
-      lastItemIndex: this.pager.getLastItemIndex(),
+      lastItemIndex: this.pager.getLastItemIndex()
     });
   };
 
@@ -343,7 +335,7 @@ class SubjectComponent extends Component {
     this.pager.goToPageIndex(pageIndex);
     this.setState({
       firstItemIndex: this.pager.getFirstItemIndex(),
-      lastItemIndex: this.pager.getLastItemIndex(),
+      lastItemIndex: this.pager.getLastItemIndex()
     });
   };
 
@@ -351,7 +343,7 @@ class SubjectComponent extends Component {
     this.sortableProperties.sortOn(prop);
 
     this.setState({
-      sortedColumn: prop,
+      sortedColumn: prop
     });
   };
 
@@ -359,11 +351,11 @@ class SubjectComponent extends Component {
     this.setState(previousState => {
       const newItemIdToSelectedMap = {
         ...previousState.itemIdToSelectedMap,
-        [itemId]: !previousState.itemIdToSelectedMap[itemId],
+        [itemId]: !previousState.itemIdToSelectedMap[itemId]
       };
 
       return {
-        itemIdToSelectedMap: newItemIdToSelectedMap,
+        itemIdToSelectedMap: newItemIdToSelectedMap
       };
     });
   };
@@ -376,7 +368,7 @@ class SubjectComponent extends Component {
     );
 
     this.setState({
-      itemIdToSelectedMap: newItemIdToSelectedMap,
+      itemIdToSelectedMap: newItemIdToSelectedMap
     });
   };
 
@@ -403,11 +395,11 @@ class SubjectComponent extends Component {
     this.setState(previousState => {
       const newItemIdToOpenActionsPopoverMap = {
         ...previousState.itemIdToOpenActionsPopoverMap,
-        [itemId]: !previousState.itemIdToOpenActionsPopoverMap[itemId],
+        [itemId]: !previousState.itemIdToOpenActionsPopoverMap[itemId]
       };
 
       return {
-        itemIdToOpenActionsPopoverMap: newItemIdToOpenActionsPopoverMap,
+        itemIdToOpenActionsPopoverMap: newItemIdToOpenActionsPopoverMap
       };
     });
   };
@@ -418,11 +410,11 @@ class SubjectComponent extends Component {
       this.setState(previousState => {
         const newItemIdToOpenActionsPopoverMap = {
           ...previousState.itemIdToOpenActionsPopoverMap,
-          [itemId]: false,
+          [itemId]: false
         };
 
         return {
-          itemIdToOpenActionsPopoverMap: newItemIdToOpenActionsPopoverMap,
+          itemIdToOpenActionsPopoverMap: newItemIdToOpenActionsPopoverMap
         };
       });
     }
@@ -436,10 +428,10 @@ class SubjectComponent extends Component {
     return (
       <EuiCheckbox
         id="selectAllCheckbox"
-        label={mobile ? 'Select all' : null}
+        label={mobile ? "Select all" : null}
         checked={this.areAllItemsSelected()}
         onChange={this.toggleAll.bind(this)}
-        type={mobile ? null : 'inList'}
+        type={mobile ? null : "inList"}
       />
     );
   };
@@ -455,7 +447,7 @@ class SubjectComponent extends Component {
         key: column.id,
         onSort: this.onSort.bind(this, column.id),
         isSorted: this.state.sortedColumn === column.id,
-        isSortAscending: this.sortableProperties.isAscendingByName(column.id),
+        isSortAscending: this.sortableProperties.isAscendingByName(column.id)
       });
     });
     return items.length ? items : null;
@@ -484,7 +476,8 @@ class SubjectComponent extends Component {
             isSortAscending={this.sortableProperties.isAscendingByName(
               column.id
             )}
-            mobileOptions={column.mobileOptions}>
+            mobileOptions={column.mobileOptions}
+          >
             {column.label}
           </EuiTableHeaderCell>
         );
@@ -520,7 +513,8 @@ class SubjectComponent extends Component {
               header={column.label}
               textOnly={false}
               hasActions={true}
-              align="right">
+              align="right"
+            >
               <EuiPopover
                 id={`${item.id}-actions`}
                 button={
@@ -535,7 +529,8 @@ class SubjectComponent extends Component {
                 isOpen={this.isPopoverOpen(item.id)}
                 closePopover={() => this.closePopover(item.id)}
                 panelPaddingSize="none"
-                anchorPosition="leftCenter">
+                anchorPosition="leftCenter"
+              >
                 <EuiContextMenuPanel
                   items={[
                     <EuiContextMenuItem
@@ -543,7 +538,8 @@ class SubjectComponent extends Component {
                       icon="pencil"
                       onClick={() => {
                         this.closePopover(item.id);
-                      }}>
+                      }}
+                    >
                       Edit
                     </EuiContextMenuItem>,
                     <EuiContextMenuItem
@@ -551,7 +547,8 @@ class SubjectComponent extends Component {
                       icon="share"
                       onClick={() => {
                         this.closePopover(item.id);
-                      }}>
+                      }}
+                    >
                       Share
                     </EuiContextMenuItem>,
                     <EuiContextMenuItem
@@ -559,9 +556,10 @@ class SubjectComponent extends Component {
                       icon="trash"
                       onClick={() => {
                         this.closePopover(item.id);
-                      }}>
+                      }}
+                    >
                       Delete
-                    </EuiContextMenuItem>,
+                    </EuiContextMenuItem>
                   ]}
                 />
               </EuiPopover>
@@ -597,8 +595,9 @@ class SubjectComponent extends Component {
             textOnly={cell ? cell.textOnly : true}
             mobileOptions={{
               header: column.label,
-              ...column.mobileOptions,
-            }}>
+              ...column.mobileOptions
+            }}
+          >
             {child}
           </EuiTableRowCell>
         );
@@ -609,7 +608,8 @@ class SubjectComponent extends Component {
           key={item.id}
           isSelected={this.isItemSelected(item.id)}
           isSelectable={true}
-          hasActions={true}>
+          hasActions={true}
+        >
           {cells}
         </EuiTableRow>
       );
@@ -636,7 +636,7 @@ class SubjectComponent extends Component {
     const pagination = {
       pageIndex: this.pager.getCurrentPageIndex(),
       pageSize: this.state.itemsPerPage,
-      totalItemCount: this.pager.getTotalPages(),
+      totalItemCount: this.pager.getTotalPages()
     };
 
     this.columns.forEach(column => {
@@ -649,7 +649,8 @@ class SubjectComponent extends Component {
         footers.push(
           <EuiTableFooterCell
             key={`footer_${column.id}`}
-            align={column.alignment}>
+            align={column.alignment}
+          >
             {footer}
           </EuiTableFooterCell>
         );
@@ -657,7 +658,8 @@ class SubjectComponent extends Component {
         footers.push(
           <EuiTableFooterCell
             key={`footer_empty_${footers.length - 1}`}
-            align={column.alignment}>
+            align={column.alignment}
+          >
             {undefined}
           </EuiTableFooterCell>
         );
@@ -671,14 +673,14 @@ class SubjectComponent extends Component {
       return null;
     }
 
-//     if (column.footer) {
-//       if (isFunction(column.footer)) {
-//         return column.footer({ items, pagination });
-//       }
-//       return column.footer;
-//     }
+    //     if (column.footer) {
+    //       if (isFunction(column.footer)) {
+    //         return column.footer({ items, pagination });
+    //       }
+    //       return column.footer;
+    //     }
 
-//     return undefined;
+    //     return undefined;
   };
   render() {
     let optionalActionButtons;
@@ -691,69 +693,65 @@ class SubjectComponent extends Component {
       );
     }
     return (
-      <div className='studentTable'>
-                      <h1>Subject Data</h1>
-                <EuiPageContentBody>
-                  <EuiFlexGroup>
-                    <EuiFlexItem>
-                      <EuiCard
-                        title="CE"  
-                      />
-                    </EuiFlexItem>
-                    <EuiFlexItem>
-                      <EuiCard
-                        title="IT"  
-                      />
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
-               
+      <div className="studentTable">
+        <h1>Students Data</h1>
+        <EuiPageContentBody>
+          <EuiFlexGroup>
+            <EuiFlexItem>
+              <EuiCard title="CE" />
+            </EuiFlexItem>
+            <EuiFlexItem>
+              <EuiCard title="IT" />
+            </EuiFlexItem>
+          </EuiFlexGroup>
 
-                <EuiFlexGroup gutterSize="m">
-                  {optionalActionButtons}
+          <EuiFlexGroup gutterSize="m">
+            {optionalActionButtons}
 
-                  <EuiFlexItem>
-                    <EuiFieldSearch fullWidth placeholder="Search..." />
-                  </EuiFlexItem>
-                </EuiFlexGroup>
+            <EuiFlexItem>
+              <EuiFieldSearch fullWidth placeholder="Search..." />
+            </EuiFlexItem>
+          </EuiFlexGroup>
 
-                <EuiSpacer size="m" />
+          <EuiSpacer size="m" />
 
-                <EuiTableHeaderMobile>
-                  <EuiFlexGroup
-                    responsive={false}
-                    justifyContent="spaceBetween"
-                    alignItems="baseline">
-                    <EuiFlexItem grow={false}>{this.renderSelectAll(true)}</EuiFlexItem>
-                    <EuiFlexItem grow={false}>
-                      <EuiTableSortMobile items={this.getTableMobileSortItems()} />
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
-                </EuiTableHeaderMobile>
+          <EuiTableHeaderMobile>
+            <EuiFlexGroup
+              responsive={false}
+              justifyContent="spaceBetween"
+              alignItems="baseline"
+            >
+              <EuiFlexItem grow={false}>
+                {this.renderSelectAll(true)}
+              </EuiFlexItem>
+              <EuiFlexItem grow={false}>
+                <EuiTableSortMobile items={this.getTableMobileSortItems()} />
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          </EuiTableHeaderMobile>
 
-                <EuiTable>
-                  <EuiTableHeader>{this.renderHeaderCells()}</EuiTableHeader>
+          <EuiTable>
+            <EuiTableHeader>{this.renderHeaderCells()}</EuiTableHeader>
 
-                  <EuiTableBody>{this.renderRows()}</EuiTableBody>
+            <EuiTableBody>{this.renderRows()}</EuiTableBody>
 
-                  <EuiTableFooter>{this.renderFooterCells()}</EuiTableFooter>
-                </EuiTable>
+            <EuiTableFooter>{this.renderFooterCells()}</EuiTableFooter>
+          </EuiTable>
 
-                <EuiSpacer size="m" />
+          <EuiSpacer size="m" />
 
-                <EuiTablePagination
-                  activePage={this.pager.getCurrentPageIndex()}
-                  itemsPerPage={this.state.itemsPerPage}
-                  itemsPerPageOptions={[5, 10, 20]}
-                  pageCount={this.pager.getTotalPages()}
-                  onChangeItemsPerPage={this.onChangeItemsPerPage}
-                  onChangePage={this.onChangePage}
-                />
-
-                </EuiPageContentBody>
+          <EuiTablePagination
+            activePage={this.pager.getCurrentPageIndex()}
+            itemsPerPage={this.state.itemsPerPage}
+            itemsPerPageOptions={[5, 10, 20]}
+            pageCount={this.pager.getTotalPages()}
+            onChangeItemsPerPage={this.onChangeItemsPerPage}
+            onChangePage={this.onChangePage}
+          />
+        </EuiPageContentBody>
       </div>
     );
   }
-  
 }
 
-export default SubjectComponent;
+export default DataTableComponent;
