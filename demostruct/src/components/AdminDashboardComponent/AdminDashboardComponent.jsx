@@ -6,10 +6,14 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import {
   EuiPage,
   EuiPageBody,
-  EuiPageSideBar
+  EuiPageSideBar,
+  EuiPageHeader,
+  EuiPageHeaderSection,
+  EuiTitle
 } from "@elastic/eui";
 import AdminHomepage from "../AdminHomepage";
 import StudentComponent from "../StudentComponent/StudentComponent";
+import SubjectComponent from "../SubjectComponent/SubjectComponent";
 
 export class AdminDashboardComponent extends Component {
  
@@ -17,17 +21,27 @@ export class AdminDashboardComponent extends Component {
     return (
       <div className="admin">
         <BrowserRouter>
-        <NavbarComponent/>
+
           <EuiPage>
-              <EuiPageSideBar><SideBarComponent /></EuiPageSideBar>
-              <EuiPageBody>
+            <EuiPageSideBar>
+              <SideBarComponent />
+            </EuiPageSideBar>
+            <EuiPageBody>
+            <EuiPageHeader>
+              <EuiPageHeaderSection>
+                <EuiTitle size="l">
+                <NavbarComponent/>
+                </EuiTitle>
+              </EuiPageHeaderSection>
+            </EuiPageHeader>
 
               <Route exact path="/adminDashboard" component={AdminHomepage} />
               <Route path="/adminDashboard/student" component={StudentComponent} />
+              <Route path="/adminDashboard/subject" component={SubjectComponent} />
 
-              </EuiPageBody>
-            </EuiPage>
-            </BrowserRouter>
+            </EuiPageBody>
+          </EuiPage>
+          </BrowserRouter>
       </div>
     );
   }

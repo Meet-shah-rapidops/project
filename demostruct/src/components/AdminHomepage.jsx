@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { FaUsers, FaUserTie, FaBook } from 'react-icons/fa';
 
 import {
     EuiCard,
     EuiFlexGroup,
     EuiFlexItem,
     EuiButton,
-    EuiIcon,
-    EuiPageContentBody,
-    EuiPageHeaderSection,
-    EuiTitle,
-    EuiPageHeader
+    EuiPageContentBody
   } from "@elastic/eui";
 
 export class AdminHomepage extends Component {
@@ -36,14 +33,7 @@ export class AdminHomepage extends Component {
     render() {
         return (
             <div>
-                 <EuiPageHeader>
-                  <EuiPageHeaderSection>
-                    <EuiTitle size="l">
-                      <h1>Page title</h1>
-                    </EuiTitle>
-                  </EuiPageHeaderSection>
-                  <EuiPageHeaderSection> </EuiPageHeaderSection>
-                </EuiPageHeader> 
+                  <h1>Admin Dashboard</h1>
                   <EuiPageContentBody>
                     
                   <div className="cardsadmin">
@@ -51,7 +41,7 @@ export class AdminHomepage extends Component {
                       <EuiFlexItem className="card">
                         <EuiCard
                           // icon={<EuiIcon size="xxl" />}
-                          icon={<EuiIcon type="user" size="xxl" />}
+                          icon={<FaUserTie size={70}/>}
                           title={`Faculty`}
                           onClick={() => window.alert("Card clicked")}
                         />
@@ -59,11 +49,7 @@ export class AdminHomepage extends Component {
                       </EuiFlexItem>
                       <EuiFlexItem className="card">
                         <EuiCard
-                          icon={
-                            <span>
-                              <i class="fas fa-user-graduate"></i>
-                            </span>
-                          }
+                          icon={<FaUsers size={70}/> }
                           title={`Student`}
                           onClick={() => window.alert("Card clicked")}
                         />
@@ -76,11 +62,11 @@ export class AdminHomepage extends Component {
                     <EuiFlexGroup style={{ width: "50%" }}>
                       <EuiFlexItem className="card">
                         <EuiCard
-                          icon={<EuiIcon type="notebookApp" size="xxl" />}
+                          icon={<FaBook size={70}/>}
                           title={`Subject`}
                           onClick={() => window.alert("Card clicked")}
                         />
-                        <Link to ='/subject'>
+                        <Link to ='/adminDashboard/subject'>
                         <EuiButton style={{width: '150%'}}> Add</EuiButton></Link>
                       </EuiFlexItem>
                     </EuiFlexGroup>

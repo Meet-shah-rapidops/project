@@ -29,6 +29,7 @@ import {
   EuiTableSortMobile,
   EuiTableHeaderMobile,
   EuiPageContentBody,
+  EuiCard
 } from '@elastic/eui';
 
 import {
@@ -679,7 +680,6 @@ class StudentComponent extends Component {
 
 //     return undefined;
   };
-
   render() {
     let optionalActionButtons;
 
@@ -690,10 +690,23 @@ class StudentComponent extends Component {
         </EuiFlexItem>
       );
     }
-
     return (
       <div className='studentTable'>
+                      <h1>Students Data</h1>
                 <EuiPageContentBody>
+                  <EuiFlexGroup>
+                    <EuiFlexItem>
+                      <EuiCard
+                        title="CE"  
+                      />
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiCard
+                        title="IT"  
+                      />
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+               
 
                 <EuiFlexGroup gutterSize="m">
                   {optionalActionButtons}
@@ -740,6 +753,7 @@ class StudentComponent extends Component {
       </div>
     );
   }
+  
 }
 
 export default StudentComponent;
