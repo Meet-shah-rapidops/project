@@ -29,7 +29,7 @@ import {
   EuiTableSortMobile,
   EuiTableHeaderMobile,
   EuiPageContentBody,
-  EuiCard
+  EuiSelect,
 } from "@elastic/eui";
 
 import {
@@ -574,8 +574,8 @@ class DataTableComponent extends Component {
           const StudentId = item.StudentId.isLink ? (
             <EuiLink href="">{item.StudentId.value}</EuiLink>
           ) : (
-            StudentIdText
-          );
+              StudentIdText
+            );
           child = column.render(StudentId, item);
         } else if (column.cellProvider) {
           child = column.cellProvider(cell);
@@ -694,16 +694,26 @@ class DataTableComponent extends Component {
     }
     return (
       <div className="studentTable">
-        <h1>Students Data</h1>
+        <div className='header'>
+          <h1>Student Table</h1>
+          <div>
+            <EuiButton fill className='add'>Add</EuiButton>
+            <div className='dropdown'>
+              <EuiSelect
+                options={[
+                  { value: 'option_one', text: 'Option one' },
+                  { value: 'option_two', text: 'Option two' },
+                  { value: 'option_three', text: 'Option three' },
+                ]}
+                compressed
+              />
+            </div>
+          </div>
+
+        </div>
+
+
         <EuiPageContentBody>
-          <EuiFlexGroup>
-            <EuiFlexItem>
-              <EuiCard title="CE" />
-            </EuiFlexItem>
-            <EuiFlexItem>
-              <EuiCard title="IT" />
-            </EuiFlexItem>
-          </EuiFlexGroup>
 
           <EuiFlexGroup gutterSize="m">
             {optionalActionButtons}

@@ -1,0 +1,17 @@
+.studentTable {
+    padding-top: 0px;
+
+    .dropdown {
+        display: inline-block;
+        padding: 5px;
+    }
+
+    .add {
+        float: right;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+}

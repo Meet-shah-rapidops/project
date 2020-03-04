@@ -1,5 +1,17 @@
-.navbar{
-    h1{
-        text-align: center;
+.navbar {
+    padding-bottom: 0px;
+
+    .nav-right {
+        float: right;
     }
+
+    .msg {
+        // margin-left: 1200px;
+    }
+
+    .notify {
+        // margin-left: 6px;
+    }
+
+    .profile {}
 }

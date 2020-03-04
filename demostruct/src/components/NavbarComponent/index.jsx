@@ -8,7 +8,7 @@ import {
   EuiSwitch,
   EuiPageHeader,
   EuiPageHeaderSection,
-  EuiTitle
+  EuiAvatar
 } from "@elastic/eui";
 
 import { FaBell, FaUserCircle } from "react-icons/fa";
@@ -43,9 +43,20 @@ class NavbarComponent extends Component {
     );
     return (
       <div className="navbar">
+
+
         <EuiPageHeader>
           <EuiPageHeaderSection>
+            <EuiAvatar
+              size="l"
+              name="Cat"
+              imageUrl="https://source.unsplash.com/64x64/?cat"
+            />&emsp; sjdcbkjbfew
+          </EuiPageHeaderSection>
+
+          <EuiPageHeaderSection>
             <EuiFieldSearch
+              className='search'
               placeholder="Search"
               value={this.state.value}
               onChange={this.onChange}
@@ -55,44 +66,46 @@ class NavbarComponent extends Component {
           </EuiPageHeaderSection>
 
           <EuiPageHeaderSection>
-            <EuiButton fill>Message</EuiButton>
+            <div className='nav-right'>
+              <EuiButton fill className='msg'>Message</EuiButton>
+              <FaBell className='notify' size={30} />
 
-            <FaBell size={30} />
-
-            <EuiPopover
-              id="trapFocus"
-              ownFocus
-              button={button}
-              isOpen={this.state.isPopoverOpen}
-              closePopover={this.closePopover.bind(this)}
-              initialFocus="[id=asdf2]"
-            >
-              <EuiFormRow
-                label="Generate a public snapshot?"
-                id="asdf"
-                hasChildLabel={false}
+              <EuiPopover
+                className='profile'
+                id="trapFocus"
+                ownFocus
+                button={button}
+                isOpen={this.state.isPopoverOpen}
+                closePopover={this.closePopover.bind(this)}
+                initialFocus="[id=asdf2]"
               >
-                <EuiSwitch
-                  name="switch"
-                  label="Snapshot data"
-                  checked={true}
-                  onChange={() => {}}
-                />
-              </EuiFormRow>
+                <EuiFormRow
+                  label="Generate a public snapshot?"
+                  id="asdf"
+                  hasChildLabel={false}
+                >
+                  <EuiSwitch
+                    name="switch"
+                    label="Snapshot data"
+                    checked={true}
+                    onChange={() => { }}
+                  />
+                </EuiFormRow>
 
-              <EuiFormRow label="Include the following in the embed" id="asdf2">
-                <EuiSwitch
-                  name="switch"
-                  label="Current time range"
-                  checked={true}
-                  onChange={() => {}}
-                />
-              </EuiFormRow>
+                <EuiFormRow label="Include the following in the embed" id="asdf2">
+                  <EuiSwitch
+                    name="switch"
+                    label="Current time range"
+                    checked={true}
+                    onChange={() => { }}
+                  />
+                </EuiFormRow>
 
-              <EuiSpacer />
+                <EuiSpacer />
 
-              <EuiButton fill>Copy IFRAME code</EuiButton>
-            </EuiPopover>
+                <EuiButton fill>Copy IFRAME code</EuiButton>
+              </EuiPopover>
+            </div>
           </EuiPageHeaderSection>
         </EuiPageHeader>
       </div>

@@ -16,13 +16,16 @@ class AdminRoutingComponent extends Component {
   render() {
     return (
       <div className="">
+
+
+        <NavbarComponent />
+
         <EuiPage>
           <EuiPageSideBar>
             <SideBarComponent />
           </EuiPageSideBar>
           <EuiPageBody>
             <EuiPageHeader>
-              <NavbarComponent />
             </EuiPageHeader>
             {/* <EuiPageContent> */}
 

@@ -21,7 +21,7 @@ export class SideBarComponent extends Component {
           {
             label: 'Create Department',
             id: 'createDept',
-            icon: <FaPlusCircle/>,
+            icon: <FaPlusCircle />,
           },
           {
             label: 'CE',
@@ -76,8 +76,8 @@ export class SideBarComponent extends Component {
                 icon: <EuiToken iconType="tokenEnum" />,
                 callback: this.showAlert,
               },
-                  
-              
+
+
             ],
           },
 
@@ -135,55 +135,49 @@ export class SideBarComponent extends Component {
                 icon: <EuiToken iconType="tokenEnum" />,
                 callback: this.showAlert,
               },
-                  
-              
+
+
             ],
           },
-          
+
         ],
       },
       {
-        label: <Link to = '/adminDashboard/student'>Student</Link>,
+        label: <Link to='/adminDashboard/student'>Student</Link>,
         id: 'student',
-        icon: <FaUsers/>,
+        icon: <FaUsers />,
       },
       {
-        label: <Link to = '/adminDashboard/student'>Faculty</Link>,
+        label: <Link to='/adminDashboard/student'>Faculty</Link>,
         id: 'faculty',
-        icon: <FaUserTie/>
+        icon: <FaUserTie />
       },
       {
-        label: <Link to = '/adminDashboard/subject'>Subject</Link>,
+        label: <Link to='/adminDashboard/subject'>Subject</Link>,
         id: 'subject',
         icon: <FaBook />,
       },
       {
-        label: <Link to = '/adminDashboard/student'>Reports</Link>,
+        label: <Link to='/adminDashboard/student'>Reports</Link>,
         id: 'report',
         icon: <FaRegFileAlt />
       },
       {
-        label: <Link to = '/adminDashboard/student'>Logs</Link>,
+        label: <Link to='/adminDashboard/student'>Logs</Link>,
         id: 'log',
         icon: <FaRegCopy />
       },
     ];
     return (
       <div>
-         <EuiAvatar
-            size="l"
-            name="Cat"
-            imageUrl="https://source.unsplash.com/64x64/?cat"
-          />&emsp; sjdcbkjbfew<br/>
-
-           <EuiAvatar
-            size="l"
-            name="Cat"
-            imageUrl="https://source.unsplash.com/64x64/?cat"
-          />&emsp; sdmv sdkv sdkv 
-         <div style={{ width: '13rem' }}>
-        <EuiTreeView items={items} aria-label="Sample Folder Tree" />
-      </div>
+        {/* <EuiAvatar
+          size="l"
+          name="Cat"
+          imageUrl="https://source.unsplash.com/64x64/?cat"
+        />&emsp; sdmv sdkv sdkv */}
+        <div style={{ width: '13rem' }}>
+          <EuiTreeView items={items} aria-label="Sample Folder Tree" />
+        </div>
       </div>
     )
   }

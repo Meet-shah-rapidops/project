@@ -6,6 +6,7 @@ import LoginPageComponent from '../components/LoginPageComponent';
 // import StudentTableComponent from '../components/AdminComponents/StudentTableComponent';
 // import SubjectsComponent from '../components/AdminComponents/SubjectsComponent';
 import AdminRoutingComponent from '../components/AdminComponents/AdminRoutingComponent';
+import RegisterComponent from '../components/RegisterComponent';
 
 const Routing = () => {
   return (
@@ -15,6 +16,10 @@ const Routing = () => {
       </Route>
       <Route exact path="/login">
         <LoginPageComponent />
+      </Route>
+
+      <Route exact path="/register">
+        <RegisterComponent />
       </Route>
 
       <AdminRoutingComponent />
