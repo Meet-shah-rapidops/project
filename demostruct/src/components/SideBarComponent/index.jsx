@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { EuiIcon, EuiTreeView, EuiToken, EuiAvatar } from '@elastic/eui';
-import { FaUsers, FaUserTie, FaBook, FaRegFileAlt, FaRegCopy, FaPlusCircle } from 'react-icons/fa';
+import { EuiIcon, EuiTreeView, EuiToken } from '@elastic/eui';
+import { FaUsers, FaUserTie, FaBook, FaRegFileAlt, FaRegCopy, FaPlusCircle, FaBuilding, FaArrowCircleRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 
@@ -14,8 +14,8 @@ export class SideBarComponent extends Component {
       {
         label: 'Department',
         id: 'dept',
-        icon: <EuiIcon type="folderClosed" />,
-        iconWhenExpanded: <EuiIcon type="folderOpen" />,
+        icon: <FaBuilding />,
+        // iconWhenExpanded: <EuiIcon type="folderOpen" />,
         isExpanded: false,
         children: [
           {
@@ -32,48 +32,48 @@ export class SideBarComponent extends Component {
               {
                 label: 'Sem-1',
                 id: 'sem-1',
-                icon: <EuiToken iconType="tokenConstant" />,
+                icon: <FaArrowCircleRight />,
               },
               {
                 label: "Sem-2",
                 id: 'sem-2',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-3",
                 id: 'sem-3',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-4",
                 id: 'sem-4',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-5",
                 id: 'sem-5',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-6",
                 id: 'sem-6',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-7",
                 id: 'sem-7',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-8",
                 id: 'sem-8',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
 
@@ -91,48 +91,48 @@ export class SideBarComponent extends Component {
               {
                 label: 'Sem-1',
                 id: 'sem-1',
-                icon: <EuiToken iconType="tokenConstant" />,
+                icon: <FaArrowCircleRight />,
               },
               {
                 label: "Sem-2",
                 id: 'sem-2',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-3",
                 id: 'sem-3',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-4",
                 id: 'sem-4',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-5",
                 id: 'sem-5',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-6",
                 id: 'sem-6',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-7",
                 id: 'sem-7',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
               {
                 label: "Sem-8",
                 id: 'sem-8',
-                icon: <EuiToken iconType="tokenEnum" />,
+                icon: <FaArrowCircleRight />,
                 callback: this.showAlert,
               },
 
@@ -143,39 +143,39 @@ export class SideBarComponent extends Component {
         ],
       },
       {
-        label: <Link to='/adminDashboard/student'>Student</Link>,
-        id: 'student',
-        icon: <FaUsers />,
-      },
-      {
-        label: <Link to='/adminDashboard/student'>Faculty</Link>,
+        label: <Link className='text-white' to='/adminDashboard/student'>Faculty</Link>,
         id: 'faculty',
         icon: <FaUserTie />
       },
       {
-        label: <Link to='/adminDashboard/subject'>Subject</Link>,
+        label: <Link className='text-white' to='/adminDashboard/student'>Student</Link>,
+        id: 'student',
+        icon: <FaUsers />,
+      },
+      {
+        label: <Link className='text-white' to='/adminDashboard/subject'>Subject</Link>,
         id: 'subject',
         icon: <FaBook />,
       },
       {
-        label: <Link to='/adminDashboard/student'>Reports</Link>,
+        label: <Link className='text-white' to='/adminDashboard/student'>Reports</Link>,
         id: 'report',
         icon: <FaRegFileAlt />
       },
       {
-        label: <Link to='/adminDashboard/student'>Logs</Link>,
+        label: <Link className='text-white' to='/adminDashboard/student'>Logs</Link>,
         id: 'log',
         icon: <FaRegCopy />
       },
     ];
     return (
-      <div>
+      <div className='sidebar'>
         {/* <EuiAvatar
           size="l"
           name="Cat"
           imageUrl="https://source.unsplash.com/64x64/?cat"
         />&emsp; sdmv sdkv sdkv */}
-        <div style={{ width: '13rem' }}>
+        <div style={{ width: '10rem' }}>
           <EuiTreeView items={items} aria-label="Sample Folder Tree" />
         </div>
       </div>

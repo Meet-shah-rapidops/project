@@ -62,150 +62,6 @@ class DataTableComponent extends Component {
         magnitude: 1,
         health: <EuiHealth color="success">Healthy</EuiHealth>
       },
-      {
-        id: 1,
-        StudentId: {
-          value: "D17ce164",
-          truncateText: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 01 2016",
-        magnitude: 1,
-        health: <EuiHealth color="success">Healthy</EuiHealth>
-      },
-      {
-        id: 2,
-        StudentId: <span>A very long line</span>,
-        type: "user",
-        dateCreated: (
-          <span>
-            Tue Dec 01 2016 &nbsp; <EuiBadge color="secondary">New!</EuiBadge>
-          </span>
-        ),
-        magnitude: 10,
-        health: <EuiHealth color="warning">Warning</EuiHealth>
-      },
-      {
-        id: 3,
-        StudentId: {
-          value: <span>A very long line</span>,
-          truncateText: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 16 2016",
-        magnitude: 100,
-        health: <EuiHealth color="success">Healthy</EuiHealth>
-      },
-      {
-        id: 4,
-        StudentId: {
-          value: "Dog",
-          isLink: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 13 2016",
-        magnitude: 1000,
-        health: <EuiHealth color="warning">Warning</EuiHealth>
-      },
-      {
-        id: 5,
-        StudentId: {
-          value: "Dragon",
-          isLink: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 11 2016",
-        magnitude: 10000,
-        health: <EuiHealth color="success">Healthy</EuiHealth>
-      },
-      {
-        id: 6,
-        StudentId: {
-          value: "Bear",
-          isLink: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 11 2016",
-        magnitude: 10000,
-        health: <EuiHealth color="danger">Danger</EuiHealth>
-      },
-      {
-        id: 7,
-        StudentId: {
-          value: "Dinosaur",
-          isLink: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 11 2016",
-        magnitude: 10000,
-        health: <EuiHealth color="warning">Warning</EuiHealth>
-      },
-      {
-        id: 8,
-        StudentId: {
-          value: "Spider",
-          isLink: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 11 2016",
-        magnitude: 10000,
-        health: <EuiHealth color="warning">Warning</EuiHealth>
-      },
-      {
-        id: 9,
-        StudentId: {
-          value: "Bugbear",
-          isLink: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 11 2016",
-        magnitude: 10000,
-        health: <EuiHealth color="success">Healthy</EuiHealth>
-      },
-      {
-        id: 10,
-        StudentId: {
-          value: "Bear",
-          isLink: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 11 2016",
-        magnitude: 10000,
-        health: <EuiHealth color="danger">Danger</EuiHealth>
-      },
-      {
-        id: 11,
-        StudentId: {
-          value: "Dinosaur",
-          isLink: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 11 2016",
-        magnitude: 10000,
-        health: <EuiHealth color="warning">Warning</EuiHealth>
-      },
-      {
-        id: 12,
-        StudentId: {
-          value: "Spider",
-          isLink: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 11 2016",
-        magnitude: 10000,
-        health: <EuiHealth color="success">Healthy</EuiHealth>
-      },
-      {
-        id: 13,
-        StudentId: {
-          value: "Bugbear",
-          isLink: true
-        },
-        type: "user",
-        dateCreated: "Tue Dec 11 2016",
-        magnitude: 10000,
-        health: <EuiHealth color="danger">Danger</EuiHealth>
-      }
     ];
 
     this.sortableProperties = new SortableProperties(
@@ -698,6 +554,16 @@ class DataTableComponent extends Component {
           <h1>Student Table</h1>
           <div>
             <EuiButton fill className='add'>Add</EuiButton>
+            <div className='dropdown'>
+              <EuiSelect
+                options={[
+                  { value: 'option_one', text: 'Option one' },
+                  { value: 'option_two', text: 'Option two' },
+                  { value: 'option_three', text: 'Option three' },
+                ]}
+                compressed
+              />
+            </div>
             <div className='dropdown'>
               <EuiSelect
                 options={[

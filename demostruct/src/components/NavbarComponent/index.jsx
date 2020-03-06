@@ -1,14 +1,21 @@
 import React, { Component } from "react";
+import { Link, Redirect } from 'react-router-dom';
+
 import {
   EuiButton,
   EuiFieldSearch,
   EuiFormRow,
   EuiPopover,
   EuiSpacer,
-  EuiSwitch,
   EuiPageHeader,
   EuiPageHeaderSection,
-  EuiAvatar
+  EuiAvatar,
+  EuiOverlayMask,
+  EuiConfirmModal,
+  EuiModal,
+  EuiModalHeader,
+  EuiModalHeaderTitle,
+  EuiModalBody
 } from "@elastic/eui";
 
 import { FaBell, FaUserCircle } from "react-icons/fa";
@@ -20,6 +27,16 @@ class NavbarComponent extends Component {
     this.state = {
       isPopoverOpen: false
     };
+  }
+
+  showModal = () => {
+    this.setState({ isModalVisible: true });
+  };
+  closeModal = () => {
+    this.setState({ isModalVisible: false });
+  };
+  confirmBox = () => {
+    redirect: "/";
   }
 
   onButtonClick() {
@@ -34,6 +51,7 @@ class NavbarComponent extends Component {
     });
   }
 
+
   render() {
     const button = (
       <FaUserCircle
@@ -41,37 +59,59 @@ class NavbarComponent extends Component {
         onClick={this.onButtonClick.bind(this)}
       ></FaUserCircle>
     );
+    let modal;
+
+    if (this.state.isModalVisible) {
+      modal = (
+        <EuiOverlayMask>
+          <EuiConfirmModal
+            title="Logout Confirmation"
+            onCancel={this.closeModal}
+            onConfirm={this.confirmBox}
+            cancelButtonText="No, don't do it"
+            confirmButtonText="Yes, do it"
+            defaultFocusedButton="confirm">
+            {/* <p>You&rsquo;re about to do something.</p> */}
+            <p>Are you sure you want to Logout?</p>
+          </EuiConfirmModal>
+        </EuiOverlayMask>
+      );
+    }
+
+
     return (
       <div className="navbar">
 
+        <EuiPageHeader className='headerOptions'>
+          <div className='headerAdditionalOptions'>
+            <EuiPageHeaderSection>
+              <EuiAvatar
+                size="l"
+                name="Cat"
+                imageUrl="https://source.unsplash.com/64x64/?cat"
+              />&emsp;
+               {/* <h3>sjdcbkjbfew</h3> */}
+            </EuiPageHeaderSection>
 
-        <EuiPageHeader>
-          <EuiPageHeaderSection>
-            <EuiAvatar
-              size="l"
-              name="Cat"
-              imageUrl="https://source.unsplash.com/64x64/?cat"
-            />&emsp; sjdcbkjbfew
-          </EuiPageHeaderSection>
-
-          <EuiPageHeaderSection>
-            <EuiFieldSearch
-              className='search'
-              placeholder="Search"
-              value={this.state.value}
-              onChange={this.onChange}
-              isClearable={this.state.isClearable}
-              aria-label="Use aria labels when no actual label is in use"
-            />
-          </EuiPageHeaderSection>
-
+            <EuiPageHeaderSection className='search'>
+              <EuiFieldSearch
+                placeholder="Search"
+                value={this.state.value}
+                onChange={this.onChange}
+                isClearable={this.state.isClearable}
+                aria-label="Use aria labels when no actual label is in use"
+              />
+            </EuiPageHeaderSection>
+          </div>
           <EuiPageHeaderSection>
             <div className='nav-right'>
               <EuiButton fill className='msg'>Message</EuiButton>
-              <FaBell className='notify' size={30} />
+
+              <FaBell className='notify' style={{}} size={30} />
 
               <EuiPopover
                 className='profile'
+                style={{}}
                 id="trapFocus"
                 ownFocus
                 button={button}
@@ -80,30 +120,21 @@ class NavbarComponent extends Component {
                 initialFocus="[id=asdf2]"
               >
                 <EuiFormRow
-                  label="Generate a public snapshot?"
+                  label="Profile"
                   id="asdf"
                   hasChildLabel={false}
                 >
-                  <EuiSwitch
-                    name="switch"
-                    label="Snapshot data"
-                    checked={true}
-                    onChange={() => { }}
-                  />
+                  <h4>ABC-Admin</h4>
                 </EuiFormRow>
 
-                <EuiFormRow label="Include the following in the embed" id="asdf2">
-                  <EuiSwitch
-                    name="switch"
-                    label="Current time range"
-                    checked={true}
-                    onChange={() => { }}
-                  />
+                <EuiFormRow label="" id="asdf2">
+                  <Link to="#">
+                    <EuiButton> Change Password</EuiButton>
+                  </Link>
                 </EuiFormRow>
 
-                <EuiSpacer />
-
-                <EuiButton fill>Copy IFRAME code</EuiButton>
+                <EuiButton className='mt-2' onClick={this.showModal}>Logout</EuiButton>
+                {modal}
               </EuiPopover>
             </div>
           </EuiPageHeaderSection>

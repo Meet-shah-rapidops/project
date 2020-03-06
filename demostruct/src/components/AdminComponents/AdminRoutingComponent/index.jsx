@@ -20,11 +20,11 @@ class AdminRoutingComponent extends Component {
 
         <NavbarComponent />
 
-        <EuiPage>
-          <EuiPageSideBar>
+        <EuiPage style={{ padding: '0px' }}>
+          <EuiPageSideBar style={{ marginRight: '0px' }}>
             <SideBarComponent />
           </EuiPageSideBar>
-          <EuiPageBody>
+          <EuiPageBody style={{ padding: '20px' }}>
             <EuiPageHeader>
             </EuiPageHeader>
             {/* <EuiPageContent> */}

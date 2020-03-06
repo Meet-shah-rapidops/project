@@ -1,3 +1,12 @@
-Link{
-    color: black;
+.sidebar {
+    background-color: #0c1824;
+    min-height: 88vh;
+    padding: 16% 5%;
+    color: white;
+    width: 180px;
+
+    .euiTreeView__nodeInner:hover,
+    .euiTreeView__nodeInner:active {
+        background-color: royalblue;
+    }
 }

@@ -1,17 +1,36 @@
 .navbar {
-    padding-bottom: 0px;
+    // margin-top: 1%;
+    // background-color:;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 0 2px #aaa;
+    padding: 0 1rem !important;
+    height: 60px;
+    line-height: 60px;
+    // background-color: #95a5a6;
+
 
     .nav-right {
         float: right;
     }
 
     .msg {
-        // margin-left: 1200px;
+        // background: transparent; 
     }
 
     .notify {
-        // margin-left: 6px;
+        margin-left: 20px;
     }
 
-    .profile {}
+    .profile {
+        margin-left: 10px;
+
+    }
+
+    .headerOptions {
+        width: 100%;
+    }
+
+    .headerAdditionalOptions {
+        display: flex;
+    }
 }
