@@ -1,4 +1,16 @@
-.card {
-    width: 80px !important;
-    background-color: red;
+.body{
+    // color: white;   
+    .link{
+     color: white;   
+     text-decoration: none;
+    }
+    .cardsOfFaculty{
+        background-color: #FF8A65;
+    }
+    .cardsOfStudent{
+        background-color: #4DB6AC;
+    }
+    .cardsOfSubject{
+        background-color: #F06292;
+    }
 }

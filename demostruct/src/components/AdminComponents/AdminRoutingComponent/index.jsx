@@ -15,12 +15,12 @@ import SubjectsComponent from "../SubjectsComponent";
 class AdminRoutingComponent extends Component {
   render() {
     return (
-      <div className="">
+      <div className='adminRouting'>
 
 
         <NavbarComponent />
 
-        <EuiPage style={{ padding: '0px' }}>
+        <EuiPage className='body' style={{ padding: '0px' }}>
           <EuiPageSideBar style={{ marginRight: '0px' }}>
             <SideBarComponent />
           </EuiPageSideBar>
@@ -29,7 +29,7 @@ class AdminRoutingComponent extends Component {
             </EuiPageHeader>
             {/* <EuiPageContent> */}
 
-            <EuiPageContentBody>
+            <EuiPageContentBody >
               <Route exact path="/adminDashboard">
                 <AdminDashboardComponent />
               </Route>

@@ -84,17 +84,18 @@ class NavbarComponent extends Component {
 
         <EuiPageHeader className='headerOptions'>
           <div className='headerAdditionalOptions'>
-            <EuiPageHeaderSection>
+            <EuiPageHeaderSection><Link to='/adminDashboard'>
               <EuiAvatar
                 size="l"
-                name="Cat"
+                name="Charusat"
                 imageUrl="https://source.unsplash.com/64x64/?cat"
-              />&emsp;
-               {/* <h3>sjdcbkjbfew</h3> */}
+              /></Link>
             </EuiPageHeaderSection>
 
             <EuiPageHeaderSection className='search'>
               <EuiFieldSearch
+              size={50}
+              // className='bg-transparent'
                 placeholder="Search"
                 value={this.state.value}
                 onChange={this.onChange}
@@ -105,13 +106,14 @@ class NavbarComponent extends Component {
           </div>
           <EuiPageHeaderSection>
             <div className='nav-right'>
-              <EuiButton fill className='msg'>Message</EuiButton>
+              <EuiButton className='msg' size="s">Message</EuiButton>
 
               <FaBell className='notify' style={{}} size={30} />
 
               <EuiPopover
                 className='profile'
                 style={{}}
+                size={25}
                 id="trapFocus"
                 ownFocus
                 button={button}

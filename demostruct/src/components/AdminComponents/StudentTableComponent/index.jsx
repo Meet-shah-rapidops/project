@@ -3,6 +3,7 @@ import DataTableComponent from '../dataTableComponent'
 
 class StudentTableComponent extends Component {
   render() {
+    
     return (
       <div className="studentTable">
         <DataTableComponent />
