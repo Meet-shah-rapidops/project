@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import {
-  EuiBadge,
   EuiHealth,
   EuiButton,
   EuiButtonIcon,
@@ -30,6 +29,11 @@ import {
   EuiTableHeaderMobile,
   EuiPageContentBody,
   EuiSelect,
+  EuiFlyout,
+  EuiFlyoutHeader,
+  EuiFlyoutBody,
+  EuiText,
+  EuiTitle
 } from "@elastic/eui";
 
 import {
@@ -49,8 +53,12 @@ class DataTableComponent extends Component {
       itemIdToSelectedMap: {},
       itemIdToOpenActionsPopoverMap: {},
       sortedColumn: "StudentId",
-      itemsPerPage: 10
+      itemsPerPage: 10,
+      isFlyoutVisible: false
     };
+
+    this.closeFlyout = this.closeFlyout.bind(this);
+    this.showFlyout = this.showFlyout.bind(this);
 
     this.items = [
       {
@@ -61,7 +69,7 @@ class DataTableComponent extends Component {
         dateCreated: "Tue Dec 28 2016",
         magnitude: 1,
         health: <EuiHealth color="success">Healthy</EuiHealth>
-      },
+      }
     ];
 
     this.sortableProperties = new SortableProperties(
@@ -240,10 +248,13 @@ class DataTableComponent extends Component {
   };
 
   areAnyRowsSelected = () => {
+    console.log(this.state.itemIdToSelectedMap);
     return (
-      Object.keys(this.state.itemIdToSelectedMap).findIndex(id => {
-        return this.state.itemIdToSelectedMap[id];
-      }) !== -1
+      // Object.keys(this.state.itemIdToSelectedMap).findIndex(id => {
+      //   return this.state.itemIdToSelectedMap[id];
+      // }) !== -1
+
+      3
     );
   };
 
@@ -430,8 +441,8 @@ class DataTableComponent extends Component {
           const StudentId = item.StudentId.isLink ? (
             <EuiLink href="">{item.StudentId.value}</EuiLink>
           ) : (
-              StudentIdText
-            );
+            StudentIdText
+          );
           child = column.render(StudentId, item);
         } else if (column.cellProvider) {
           child = column.cellProvider(cell);
@@ -538,8 +549,19 @@ class DataTableComponent extends Component {
 
     //     return undefined;
   };
+
+  closeFlyout() {
+    this.setState({ isFlyoutVisible: false });
+  }
+
+  showFlyout() {
+    this.setState({ isFlyoutVisible: true });
+  }
   render() {
     let optionalActionButtons;
+    let flyout;
+
+    console.log(this.areAnyRowsSelected());
 
     if (this.areAnyRowsSelected() > 0) {
       optionalActionButtons = (
@@ -547,87 +569,110 @@ class DataTableComponent extends Component {
           <EuiButton color="danger">Delete selected</EuiButton>
         </EuiFlexItem>
       );
-    }
-    return (
-      <div className="studentTable">
-        <div className='header'>
-          <h1>Student Table</h1>
-          <div>
-            <EuiButton fill className='add'>Add</EuiButton>
-            <div className='dropdown'>
-              <EuiSelect
-                options={[
-                  { value: 'option_one', text: 'Option one' },
-                  { value: 'option_two', text: 'Option two' },
-                  { value: 'option_three', text: 'Option three' },
-                ]}
-                compressed
-              />
-            </div>
-            <div className='dropdown'>
-              <EuiSelect
-                options={[
-                  { value: 'option_one', text: 'Option one' },
-                  { value: 'option_two', text: 'Option two' },
-                  { value: 'option_three', text: 'Option three' },
-                ]}
-                compressed
-              />
+
+      if (this.state.isFlyoutVisible) {
+        flyout = (
+          <EuiFlyout
+            ownFocus
+            onClose={this.closeFlyout}
+            size="s"
+            aria-labelledby="flyoutSmallTitle"
+          >
+            <EuiFlyoutHeader hasBorder>
+              <EuiTitle size="s">
+                <h2 id="flyoutSmallTitle">A small flyout</h2>
+              </EuiTitle>
+            </EuiFlyoutHeader>
+            <EuiFlyoutBody>
+              <EuiText>
+                <p>
+                  In small flyouts, it is ok to reduce the header size to{" "}
+                  <code>s</code>.
+                </p>
+              </EuiText>
+            </EuiFlyoutBody>
+          </EuiFlyout>
+        );
+      }
+      return (
+        <div className="studentTable">
+          <div className="header">
+            <h1>Student Table</h1>
+            <div>
+              {/* <EuiButton size='s' fill className='add'>Add</EuiButton> */}
+              <EuiButton onClick={this.showFlyout}>Show small flyout</EuiButton>
+              {flyout}
+              <div className="dropdown">
+                <EuiSelect
+                  options={[
+                    { value: "option_one", text: "Option one" },
+                    { value: "option_two", text: "Option two" },
+                    { value: "option_three", text: "Option three" }
+                  ]}
+                  compressed
+                />
+              </div>
+              <div className="dropdown">
+                <EuiSelect
+                  options={[
+                    { value: "option_one", text: "Option one" },
+                    { value: "option_two", text: "Option two" },
+                    { value: "option_three", text: "Option three" }
+                  ]}
+                  compressed
+                />
+              </div>
             </div>
           </div>
 
-        </div>
+          <EuiPageContentBody>
+            <EuiFlexGroup gutterSize="m">
+              {optionalActionButtons}
 
-
-        <EuiPageContentBody>
-
-          <EuiFlexGroup gutterSize="m">
-            {optionalActionButtons}
-
-            <EuiFlexItem>
-              <EuiFieldSearch fullWidth placeholder="Search..." />
-            </EuiFlexItem>
-          </EuiFlexGroup>
-
-          <EuiSpacer size="m" />
-
-          <EuiTableHeaderMobile>
-            <EuiFlexGroup
-              responsive={false}
-              justifyContent="spaceBetween"
-              alignItems="baseline"
-            >
-              <EuiFlexItem grow={false}>
-                {this.renderSelectAll(true)}
-              </EuiFlexItem>
-              <EuiFlexItem grow={false}>
-                <EuiTableSortMobile items={this.getTableMobileSortItems()} />
+              <EuiFlexItem>
+                <EuiFieldSearch fullWidth placeholder="Search..." />
               </EuiFlexItem>
             </EuiFlexGroup>
-          </EuiTableHeaderMobile>
 
-          <EuiTable>
-            <EuiTableHeader>{this.renderHeaderCells()}</EuiTableHeader>
+            <EuiSpacer size="m" />
 
-            <EuiTableBody>{this.renderRows()}</EuiTableBody>
+            <EuiTableHeaderMobile>
+              <EuiFlexGroup
+                responsive={false}
+                justifyContent="spaceBetween"
+                alignItems="baseline"
+              >
+                <EuiFlexItem grow={false}>
+                  {this.renderSelectAll(true)}
+                </EuiFlexItem>
+                <EuiFlexItem grow={false}>
+                  <EuiTableSortMobile items={this.getTableMobileSortItems()} />
+                </EuiFlexItem>
+              </EuiFlexGroup>
+            </EuiTableHeaderMobile>
 
-            <EuiTableFooter>{this.renderFooterCells()}</EuiTableFooter>
-          </EuiTable>
+            <EuiTable>
+              <EuiTableHeader>{this.renderHeaderCells()}</EuiTableHeader>
 
-          <EuiSpacer size="m" />
+              <EuiTableBody>{this.renderRows()}</EuiTableBody>
 
-          <EuiTablePagination
-            activePage={this.pager.getCurrentPageIndex()}
-            itemsPerPage={this.state.itemsPerPage}
-            itemsPerPageOptions={[5, 10, 20]}
-            pageCount={this.pager.getTotalPages()}
-            onChangeItemsPerPage={this.onChangeItemsPerPage}
-            onChangePage={this.onChangePage}
-          />
-        </EuiPageContentBody>
-      </div>
-    );
+              <EuiTableFooter>{this.renderFooterCells()}</EuiTableFooter>
+            </EuiTable>
+
+            <EuiSpacer size="m" />
+
+            <EuiTablePagination
+              activePage={this.pager.getCurrentPageIndex()}
+              itemsPerPage={this.state.itemsPerPage}
+              itemsPerPageOptions={[5, 10, 20]}
+              pageCount={this.pager.getTotalPages()}
+              onChangeItemsPerPage={this.onChangeItemsPerPage}
+              onChangePage={this.onChangePage}
+            />
+          </EuiPageContentBody>
+        </div>
+      );
+    }
   }
 }
-
 export default DataTableComponent;

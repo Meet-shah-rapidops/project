@@ -5,8 +5,7 @@ import {
   EuiPageContentBody,
   EuiCard,
   EuiFlexGroup,
-  EuiFlexItem,
-  EuiButton
+  EuiFlexItem
 } from "@elastic/eui";
 
 class AdminDashboardComponent extends Component {
@@ -37,34 +36,34 @@ class AdminDashboardComponent extends Component {
         <EuiPageContentBody className='body'>
           <EuiFlexGroup style={{ width: "100%" }}>
             <EuiFlexItem>
-            <Link className='link' to='/adminDashboard/student'>
-              <EuiCard
-              className='cardsOfFaculty'
-              layout="horizontal"
-                // icon={<EuiIcon size="xxl" />}
-                icon={<FaUserTie size={70} />}
-                title={`Faculty`}
-              /></Link>
+              <Link className='link' to='/adminDashboard/student'>
+                <EuiCard
+                  className='cardsOfFaculty'
+                  // layout="horizontal"
+                  // icon={<EuiIcon size="xxl" />}
+                  icon={<FaUserTie size={70} />}
+                  title={`Faculty`}
+                /></Link>
             </EuiFlexItem>
 
             <EuiFlexItem>
               <Link className='link' to='/adminDashboard/student'>
-              <EuiCard
-              className='cardsOfStudent'
-              layout="horizontal"
-                icon={<FaUsers size={70} />}
-                title={`Student`}
-              /></Link>
+                <EuiCard
+                  className='cardsOfStudent'
+                  // layout="horizontal"
+                  icon={<FaUsers size={70} />}
+                  title={`Student`}
+                /></Link>
             </EuiFlexItem>
 
             <EuiFlexItem>
-            <Link className='link' to='/adminDashboard/student'>
-              <EuiCard
-              layout="horizontal"
-              className='cardsOfSubject'
-                icon={<FaBook size={70} />}
-                title={`Subject`}
-              /></Link>
+              <Link className='link' to='/adminDashboard/student'>
+                <EuiCard
+                  // layout="horizontal"
+                  className='cardsOfSubject'
+                  icon={<FaBook size={70} />}
+                  title={`Subject`}
+                /></Link>
             </EuiFlexItem>
 
           </EuiFlexGroup>
