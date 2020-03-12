@@ -43,10 +43,17 @@ class LoginPageComponent extends Component {
             onChange={this.onChange}
             aria-label="Use aria labels when no actual label is in use"
           />
-          <Link to="/adminDashboard">
+          {/* <Link to="/adminDashboard">
+            <EuiButton className="loginBtn">Login</EuiButton>
+            <br />
+          </Link> */}
+
+          <Link to="/facultyDashboard">
             <EuiButton className="loginBtn">Login</EuiButton>
             <br />
           </Link>
+
+
 
           {/* <a href= '#'>Forget Password</a> */}
           <EuiLink color="secondary" href="#">

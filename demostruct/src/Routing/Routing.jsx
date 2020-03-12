@@ -5,8 +5,9 @@ import LoginPageComponent from '../components/LoginPageComponent';
 // import AdminDashboardComponent from '../components/AdminComponents/AdminDashboradComponent';
 // import StudentTableComponent from '../components/AdminComponents/StudentTableComponent';
 // import SubjectsComponent from '../components/AdminComponents/SubjectsComponent';
-import AdminRoutingComponent from '../components/AdminComponents/AdminRoutingComponent';
+// import AdminRoutingComponent from '../components/AdminComponents/AdminRoutingComponent';
 import RegisterComponent from '../components/RegisterComponent';
+import FacultyMainPage from '../components/Faculty/FacultyMainPage'
 
 const Routing = () => {
   return (
@@ -22,7 +23,8 @@ const Routing = () => {
         <RegisterComponent />
       </Route>
 
-      <AdminRoutingComponent />
+      {/* <AdminRoutingComponent /> */}
+      <FacultyMainPage/>
 
       {/* Admin Routing
       <Route exact path="/adminDashboard">

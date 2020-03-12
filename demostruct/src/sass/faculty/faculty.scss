@@ -1,0 +1,120 @@
+
+// ---------- Dashboard Component ----------
+
+@mixin commanCardAttributes {
+    height: 100px;
+    color: white;
+    line-height: 100px;
+}
+
+.viewAll {
+    float: right;
+    margin: 10px 30px;
+}
+
+.scrollable {
+    overflow-x: scroll; 
+    height: 110px;
+  
+}
+
+.subjectCard {
+    width: 500px;
+    .subjectCardHeader {
+        @include commanCardAttributes;
+        background-color: royalblue;
+    }
+}
+
+.deadlineCard {
+    width: 500px;
+    height: 280px;
+    .deadlineCardHeader {
+        @include commanCardAttributes;
+        background-color: #d30c0c;
+    }
+}
+
+.assignmentCard {
+    width: 500px;
+    .assignmentCardHeader{
+        @include commanCardAttributes;
+        background-color: #053e6d;
+    }
+
+}
+
+.testCard {
+    width: 900px;
+    .testCardHeader {
+        @include commanCardAttributes;
+        background-color: purple;
+    }
+}
+
+
+// ---------- Subjects Component ----------
+
+.subjectsPanel{
+    width: 250px;
+    height: 150px;
+    line-height: 150px;
+    font-size: 30px;
+    padding: 0px;
+    color: white;
+    background: rgb(59,59,144);
+    background: linear-gradient(240deg, rgba(59,59,144,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+
+// ---------- Profile Component ----------
+
+
+.profileCard {
+    width: 300px;
+    max-height: 350px;
+
+    .profileCardHeader {
+        background: rgb(59,59,144);
+
+        h3 {
+            color: white;
+        }
+        .profilePic{
+            width: 150px;
+            height: 150px;
+            font-size: 50px;
+            line-height: 150px;
+        }
+    }
+
+    .size {
+        width: 90px;
+        margin: 5px 0px;
+    }
+
+    .editBtn{
+        width: 300px;
+    }
+}
+
+.profileDetails{
+    width: 1000px;
+
+    .divSize{
+        width: 500px;
+
+        .sideSize{
+            width: 200px;
+        }
+    
+        .middleSize{
+            width: 20px;
+        }
+    }
+}
+
+
+
+
+
