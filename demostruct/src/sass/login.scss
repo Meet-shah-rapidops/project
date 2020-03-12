@@ -15,9 +15,8 @@
     align-items: center;
     text-align: center;
     padding-top: 10%;
+    background-image: linear-gradient(to bottom right, red, yellow);
     
-     
-
     .loginName{
         // color: white;
         font-size: 190%;
@@ -28,7 +27,7 @@
         background: transparent;
         // padding: 35px;
         // color: white;
-        
+
     }
     .password{
         margin-top: 30px;
@@ -44,4 +43,31 @@
         border-radius: 20px;
         // background-color: lightblue;
     }
+}
+
+.LoginPage h2 {
+    font-size: 190%;
+    font-weight: bold;
+    padding-left: 7rem;
+    
+
+}
+
+.LoginPage #forgot {
+    margin-left: 60%;
+    margin-bottom: 4%;
+ 
+}
+
+#register {
+    #label {
+        margin-left: 5rem;
+        margin-top: 2rem;
+        font-size: small;
+    }
+    
+    #link {
+        margin-top: 1.8rem;
+        margin-left: 0.5rem;
+    }   
 }
