@@ -72,7 +72,7 @@ class LoginPageComponent extends Component {
               <EuiPageContentHeader>
                 <EuiPageContentHeaderSection>
                   <EuiTitle>
-                    <h2>Welcome</h2>
+                    <h2>Sign In</h2>
                   </EuiTitle>
                 </EuiPageContentHeaderSection>
               </EuiPageContentHeader>
