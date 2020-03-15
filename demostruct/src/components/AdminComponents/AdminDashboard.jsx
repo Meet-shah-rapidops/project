@@ -36,7 +36,7 @@ class AdminDashboardComponent extends Component {
         <EuiPageContentBody className='body'>
           <EuiFlexGroup style={{ width: "100%" }}>
             <EuiFlexItem>
-              <Link className='link' to='/adminDashboard/student'>
+              <Link className='link' to='/adminDashboard/faculty'>
                 <EuiCard
                   className='cardsOfFaculty'
                   // layout="horizontal"
@@ -57,7 +57,7 @@ class AdminDashboardComponent extends Component {
             </EuiFlexItem>
 
             <EuiFlexItem>
-              <Link className='link' to='/adminDashboard/student'>
+              <Link className='link' to='/adminDashboard/subject'>
                 <EuiCard
                   // layout="horizontal"
                   className='cardsOfSubject'

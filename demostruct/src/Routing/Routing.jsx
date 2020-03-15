@@ -1,12 +1,12 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import LoginPageComponent from '../components/LoginPageComponent';
+import LoginPageComponent from '../components/Login';
 // import AdminDashboardComponent from '../components/AdminComponents/AdminDashboradComponent';
 // import StudentTableComponent from '../components/AdminComponents/StudentTableComponent';
 // import SubjectsComponent from '../components/AdminComponents/SubjectsComponent';
-import AdminRoutingComponent from '../components/AdminComponents/AdminRoutingComponent';
-import RegisterComponent from '../components/RegisterComponent';
+import AdminRoutingComponent from '../components/AdminComponents/AdminRouting';
+import RegisterComponent from '../components/Register';
 
 const Routing = () => {
   return (
@@ -22,18 +22,10 @@ const Routing = () => {
         <RegisterComponent />
       </Route>
 
+      
+
       <AdminRoutingComponent />
 
-      {/* Admin Routing
-      <Route exact path="/adminDashboard">
-        <AdminDashboardComponent />
-      </Route>
-      <Route exact path="/adminDashboard/student">
-        <StudentTableComponent />
-      </Route>
-      <Route exact path="/adminDashboard/subject">
-        <SubjectsComponent />
-      </Route> */}
     </Switch>
   );
 };

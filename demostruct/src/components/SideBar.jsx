@@ -143,7 +143,12 @@ export class SideBarComponent extends Component {
         ],
       },
       {
-        label: <Link className='text-white' to='/adminDashboard/student'>Faculty</Link>,
+        label: <Link className='text-white' to='/adminDashboard'>Dashboard</Link>,
+        id: 'dashboard',
+        icon: <EuiIcon type="dashboardApp" />
+      },
+      {
+        label: <Link className='text-white' to='/adminDashboard/faculty'>Faculty</Link>,
         id: 'faculty',
         icon: <FaUserTie />
       },

@@ -6,12 +6,14 @@ import {
   EuiPageHeader,
   EuiPageSideBar
 } from "@elastic/eui";
-import NavbarComponent from "../../NavbarComponent";
-import SideBarComponent from "../../SideBarComponent";
+import NavbarComponent from "../Navbar";
+import SideBarComponent from "../SideBar";
 import { Route } from "react-router-dom";
-import AdminDashboardComponent from "../AdminDashboradComponent";
-import StudentTableComponent from "../StudentTableComponent";
-import SubjectsComponent from "../SubjectsComponent";
+import AdminDashboardComponent from "../AdminComponents/AdminDashboard";
+import StudentData from "../AdminComponents/StudentData";
+import SubjectData from "../AdminComponents/SubjectData";
+import FacultyData from "../AdminComponents/FacultyData";
+
 class AdminRoutingComponent extends Component {
   render() {
     return (
@@ -34,11 +36,15 @@ class AdminRoutingComponent extends Component {
                 <AdminDashboardComponent />
               </Route>
               <Route exact path="/adminDashboard/student">
-                <StudentTableComponent />
+                <StudentData />
               </Route>
               <Route exact path="/adminDashboard/subject">
-                <SubjectsComponent />
+                <SubjectData/>
               </Route>
+              <Route exact path="/adminDashboard/faculty">
+                <FacultyData/>
+              </Route>
+             
             </EuiPageContentBody>
           </EuiPageBody>
         </EuiPage>

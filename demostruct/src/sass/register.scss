@@ -1,0 +1,57 @@
+.RegisterPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 8%;
+    // background-image: linear-gradient(to bottom right, red, yellow);
+    
+    .loginName{
+        // color: white;
+        font-size: 190%;
+    }
+    .email{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background: transparent;
+        // padding: 35px;
+        // color: white;
+
+    }
+    .password{
+        margin-top: 30px;
+        margin-bottom: 20px;
+        background: transparent;
+        // padding: 35px;
+        // color: white;
+
+    }
+    .registerBtn{
+        margin-top: 40px;
+        margin-bottom: 20px;
+        border-radius: 20px;
+        // background-color: lightblue;
+    }
+}
+
+.RegisterPage h2 {
+    font-size: 190%;
+    font-weight: bold;
+    padding-left: 8rem;
+    
+
+}
+
+#login {
+    #label {
+        margin-left: 5rem;
+        margin-top: 2rem;
+        font-size: small;
+    }
+    
+    #link {
+        margin-top: 1.8rem;
+        margin-left: 0.5rem;
+    }   
+}
