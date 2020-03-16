@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect } from "react-router-dom";
 
 import {
   EuiButton,
@@ -37,7 +37,7 @@ class NavbarComponent extends Component {
   };
   confirmBox = () => {
     redirect: "/";
-  }
+  };
 
   onButtonClick() {
     this.setState({
@@ -50,7 +50,6 @@ class NavbarComponent extends Component {
       isPopoverOpen: false
     });
   }
-
 
   render() {
     const button = (
@@ -70,7 +69,8 @@ class NavbarComponent extends Component {
             onConfirm={this.confirmBox}
             cancelButtonText="No, don't do it"
             confirmButtonText="Yes, do it"
-            defaultFocusedButton="confirm">
+            defaultFocusedButton="confirm"
+          >
             {/* <p>You&rsquo;re about to do something.</p> */}
             <p>Are you sure you want to Logout?</p>
           </EuiConfirmModal>
@@ -78,24 +78,24 @@ class NavbarComponent extends Component {
       );
     }
 
-
     return (
       <div className="navbar">
-
-        <EuiPageHeader className='headerOptions'>
-          <div className='headerAdditionalOptions'>
-            <EuiPageHeaderSection><Link to='/adminDashboard'>
-              <EuiAvatar
-                size="l"
-                name="Charusat"
-                imageUrl="https://source.unsplash.com/64x64/?cat"
-              /></Link>
+        <EuiPageHeader className="headerOptions">
+          <div className="headerAdditionalOptions">
+            <EuiPageHeaderSection>
+              <Link to="/adminDashboard">
+                <EuiAvatar
+                  size="l"
+                  name="Charusat"
+                  imageUrl="https://source.unsplash.com/64x64/?cat"
+                />
+              </Link>
             </EuiPageHeaderSection>
 
-            <EuiPageHeaderSection className='search'>
+            <EuiPageHeaderSection className="search">
               <EuiFieldSearch
-              size={50}
-              // className='bg-transparent'
+                size={50}
+                // className='bg-transparent'
                 placeholder="Search"
                 value={this.state.value}
                 onChange={this.onChange}
@@ -105,13 +105,15 @@ class NavbarComponent extends Component {
             </EuiPageHeaderSection>
           </div>
           <EuiPageHeaderSection>
-            <div className='nav-right'>
-              <EuiButton className='msg' size="s">Message</EuiButton>
+            <div className="nav-right">
+              <EuiButton className="msg" size="s">
+                Message
+              </EuiButton>
 
-              <FaBell className='notify' style={{}} size={30} />
+              <FaBell className="notify" style={{}} size={30} />
 
               <EuiPopover
-                className='profile'
+                className="profile"
                 style={{}}
                 size={25}
                 id="trapFocus"
@@ -121,21 +123,19 @@ class NavbarComponent extends Component {
                 closePopover={this.closePopover.bind(this)}
                 initialFocus="[id=asdf2]"
               >
-                <EuiFormRow
-                  label="Profile"
-                  id="asdf"
-                  hasChildLabel={false}
-                >
+                <EuiFormRow label="Profile" id="asdf" hasChildLabel={false}>
                   <h4>ABC-Admin</h4>
                 </EuiFormRow>
 
                 <EuiFormRow label="" id="asdf2">
-                  <Link to="#">
+                  <Link to="/changepassword">
                     <EuiButton> Change Password</EuiButton>
                   </Link>
                 </EuiFormRow>
 
-                <EuiButton className='mt-2' onClick={this.showModal}>Logout</EuiButton>
+                <EuiButton className="mt-2" onClick={this.showModal}>
+                  Logout
+                </EuiButton>
                 {modal}
               </EuiPopover>
             </div>

@@ -5,21 +5,17 @@ import {
   EuiFormRow,
   EuiButton,
   EuiFieldText,
-  EuiFieldPassword,
   EuiPage,
   EuiPageBody,
   EuiPageContent,
   EuiPageContentBody,
   EuiPageContentHeader,
   EuiPageContentHeaderSection,
-  EuiTitle,
-  EuiLink,
-  EuiFlexGroup,
-  EuiFormLabel
+  EuiTitle
 } from "@elastic/eui";
 import { EuiSpacer } from "@elastic/eui";
 
-class RegisterComponent extends Component {
+class ForgetPassword extends Component {
   constructor(props) {
     super(props);
 
@@ -36,7 +32,7 @@ class RegisterComponent extends Component {
 
   render() {
     return (
-      <div className="RegisterPage">
+      <div className="forgetpage text-center" style={{ marginTop: "10%" }}>
         <EuiPage>
           <EuiPageBody>
             <EuiPageContent
@@ -45,21 +41,13 @@ class RegisterComponent extends Component {
             >
               <EuiPageContentHeader>
                 <EuiPageContentHeaderSection>
-                  <EuiTitle>
-                    <h2>Sign Up</h2>
+                  <EuiTitle style={{ marginLeft: "7vh" }}>
+                    <h2>Forget Password</h2>
                   </EuiTitle>
                 </EuiPageContentHeaderSection>
               </EuiPageContentHeader>
               <EuiPageContentBody>
                 <EuiForm style={{ width: 350 }}>
-                  <EuiFormRow
-                    label="Username"
-                    value={this.state.value}
-                    onChange={this.onChange}
-                  >
-                    <EuiFieldText icon="user" />
-                  </EuiFormRow>
-
                   <EuiFormRow
                     label="Email"
                     value={this.state.value}
@@ -67,28 +55,12 @@ class RegisterComponent extends Component {
                   >
                     <EuiFieldText icon="email" />
                   </EuiFormRow>
-
-                  <EuiFormRow
-                    label="Password"
-                    helpText="Must include one number and one symbol"
-                    value={this.state.value}
-                    onChange={this.onChange}
-                  >
-                    <EuiFieldPassword icon="lock" />
-                  </EuiFormRow>
                   <EuiSpacer />
                   <Link to="/login">
                     <EuiButton type="submit" fill>
-                      Register
+                      send
                     </EuiButton>
                   </Link>
-
-                  <EuiFlexGroup id="login">
-                    <EuiFormLabel id="label">Already registered?</EuiFormLabel>
-                    <Link to="/login">
-                      <EuiLink id="link">Login</EuiLink>
-                    </Link>
-                  </EuiFlexGroup>
                 </EuiForm>
               </EuiPageContentBody>
             </EuiPageContent>
@@ -99,4 +71,4 @@ class RegisterComponent extends Component {
   }
 }
 
-export default RegisterComponent;
+export default ForgetPassword;
