@@ -6,19 +6,14 @@ import {
   EuiFieldSearch,
   EuiFormRow,
   EuiPopover,
-  EuiSpacer,
   EuiPageHeader,
   EuiPageHeaderSection,
   EuiAvatar,
   EuiOverlayMask,
-  EuiConfirmModal,
-  EuiModal,
-  EuiModalHeader,
-  EuiModalHeaderTitle,
-  EuiModalBody
+  EuiConfirmModal
 } from "@elastic/eui";
 
-import { FaBell, FaUserCircle } from "react-icons/fa";
+import { FaBell } from "react-icons/fa";
 
 class NavbarComponent extends Component {
   constructor(props) {
@@ -53,11 +48,14 @@ class NavbarComponent extends Component {
 
   render() {
     const button = (
-      <FaUserCircle
-        size={30}
+      <EuiAvatar
+        size="l"
+        name="Admin"
+        imageUrl=""
         onClick={this.onButtonClick.bind(this)}
-      ></FaUserCircle>
+      />
     );
+
     let modal;
 
     if (this.state.isModalVisible) {

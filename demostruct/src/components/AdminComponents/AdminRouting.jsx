@@ -17,21 +17,18 @@ import FacultyData from "../AdminComponents/FacultyData";
 class AdminRoutingComponent extends Component {
   render() {
     return (
-      <div className='adminRouting'>
-
-
+      <div className="adminRouting">
         <NavbarComponent />
 
-        <EuiPage className='body' style={{ padding: '0px' }}>
-          <EuiPageSideBar style={{ marginRight: '0px' }}>
+        <EuiPage className="body" style={{ padding: "0px" }}>
+          <EuiPageSideBar style={{ marginRight: "0px" }}>
             <SideBarComponent />
           </EuiPageSideBar>
-          <EuiPageBody style={{ padding: '20px' }}>
-            <EuiPageHeader>
-            </EuiPageHeader>
+          <EuiPageBody style={{ padding: "20px" }}>
+            <EuiPageHeader></EuiPageHeader>
             {/* <EuiPageContent> */}
 
-            <EuiPageContentBody >
+            <EuiPageContentBody>
               <Route exact path="/adminDashboard">
                 <AdminDashboardComponent />
               </Route>
@@ -39,12 +36,11 @@ class AdminRoutingComponent extends Component {
                 <StudentData />
               </Route>
               <Route exact path="/adminDashboard/subject">
-                <SubjectData/>
+                <SubjectData />
               </Route>
               <Route exact path="/adminDashboard/faculty">
-                <FacultyData/>
+                <FacultyData />
               </Route>
-             
             </EuiPageContentBody>
           </EuiPageBody>
         </EuiPage>

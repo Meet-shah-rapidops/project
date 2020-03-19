@@ -23,13 +23,26 @@ class LoginPageComponent extends Component {
     super(props);
 
     this.state = {
-      value: ""
+      email: "",
+      password: ""
     };
   }
 
-  onChange = e => {
-    this.setState({
-      value: e.target.value
+  // onChange = e => {
+  //   this.setState({
+  //     value: e.target.value
+  //   });
+  // };
+
+  login = () => {
+    console.warn(this.state);
+    fetch(
+      "https://assignment-system.herokuapp.com/user/api/admin/login" +
+        this.state.name
+    ).then(data => {
+      data.json().then(resp => {
+        console.warn("resp", resp);
+      });
     });
   };
 
@@ -54,16 +67,24 @@ class LoginPageComponent extends Component {
                   <EuiFormRow
                     label="Email"
                     value={this.state.value}
-                    onChange={this.onChange}
+                    // onChange={this.onChange}
+                    name="email"
+                    onChange={event =>
+                      this.setState({ email: event.target.value })
+                    }
                   >
                     <EuiFieldText icon="email" />
                   </EuiFormRow>
 
                   <EuiFormRow
                     label="Password"
+                    name="password"
                     helpText="Must include one number and one symbol"
                     value={this.state.value}
-                    onChange={this.onChange}
+                    // onChange={this.onChange}
+                    onChange={event =>
+                      this.setState({ password: event.target.value })
+                    }
                   >
                     <EuiFieldPassword icon="lock" />
                   </EuiFormRow>
@@ -74,11 +95,17 @@ class LoginPageComponent extends Component {
                     </Link>
                   </EuiFormRow>
 
-                  <Link to="/adminDashboard">
-                    <EuiButton type="submit" fill>
-                      Login
-                    </EuiButton>
-                  </Link>
+                  {/* <Link to="/adminDashboard"> */}
+                  <EuiButton
+                    type="submit"
+                    fill
+                    onClick={() => {
+                      this.login();
+                    }}
+                  >
+                    Login
+                  </EuiButton>
+                  {/* </Link> */}
 
                   <EuiFlexGroup id="register">
                     <EuiFormLabel id="label">Not registered?</EuiFormLabel>

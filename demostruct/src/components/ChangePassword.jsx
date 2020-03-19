@@ -32,7 +32,10 @@ class ChangePassword extends Component {
 
   render() {
     return (
-      <div className="forgetpage text-center" style={{ marginTop: "10%" }}>
+      <div
+        className="changepasswordpage text-center"
+        style={{ marginTop: "10%" }}
+      >
         <EuiPage>
           <EuiPageBody>
             <EuiPageContent

@@ -9,6 +9,7 @@ import AdminRoutingComponent from "../components/AdminComponents/AdminRouting";
 import RegisterComponent from "../components/Register";
 import ForgetPassword from "../components/ForgetPassword";
 import ChangePassword from "../components/ChangePassword";
+import Forums from "../components/Forum";
 
 const Routing = () => {
   return (
@@ -29,6 +30,9 @@ const Routing = () => {
       </Route>
       <Route exact path="/changepassword">
         <ChangePassword />
+      </Route>
+      <Route exact path="/forum">
+        <Forums />
       </Route>
 
       <AdminRoutingComponent />

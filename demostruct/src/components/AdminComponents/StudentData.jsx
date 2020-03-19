@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import DataTable from './DataTable';
+import React, { Component, Fragment } from "react";
+import ReactFileReader from "react-file-reader";
+import DataTable from "./DataTable";
 import {
   EuiButton,
   EuiButtonEmpty,
@@ -9,10 +10,8 @@ import {
   EuiModalHeader,
   EuiModalHeaderTitle,
   EuiOverlayMask,
-  EuiFilePicker,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiText,
   EuiSpacer,
   EuiFieldText,
   EuiFieldPassword,
@@ -20,8 +19,8 @@ import {
   EuiPageContentBody,
   EuiPageContentHeader,
   EuiPageContentHeaderSection,
-  EuiTitle,
-} from '@elastic/eui';
+  EuiTitle
+} from "@elastic/eui";
 
 const data = [
   {
@@ -29,22 +28,42 @@ const data = [
     firstName: "Nawal",
     lastName: "Kishor",
     Email: "nawal2733@gmail.com",
-    age: 26,
+    age: 26
   },
   {
     id: 2,
     firstName: "Nawal",
     lastName: "Kishor",
-    Email: "nawal2733@gmail.com"
+    Email: "nawal2733@gmail.com",
+    age: 26
   },
   {
     id: 3,
     firstName: "Nawal",
     lastName: "Kishor",
-    Email: "nawal2733@gmail.com"
+    Email: "nawal2733@gmail.com",
+    age: 26
   }
 ];
-const fieldName = ["id", "firstName", "lastName", "Email", "age",];
+const fieldName = ["id", "firstName", "lastName", "Email", "age", "actions"];
+
+const actions = [
+  {
+    name: "Clone",
+    description: "Clone this person",
+    icon: "copy",
+    type: "icon"
+    // onClick: this.cloneUser
+  },
+  {
+    name: "Delete",
+    description: "Delete this person",
+    icon: "trash",
+    type: "icon",
+    color: "danger"
+    // onClick: this.deleteUser
+  }
+];
 
 class StudentData extends Component {
   constructor(props) {
@@ -53,12 +72,22 @@ class StudentData extends Component {
     this.state = {
       isModalVisible: false,
       files: {},
-      large: true,
+      large: true
     };
 
     this.closeModal = this.closeModal.bind(this);
     this.showModal = this.showModal.bind(this);
   }
+
+  deleteUser = user => {
+    store.deleteUsers(user.id);
+    this.setState({ selectedItems: [] });
+  };
+
+  cloneUser = user => {
+    store.cloneUser(user.id);
+    this.setState({ selectedItems: [] });
+  };
 
   closeModal() {
     this.setState({ isModalVisible: false });
@@ -70,7 +99,7 @@ class StudentData extends Component {
 
   onChange = files => {
     this.setState({
-      files: files,
+      files: files
     });
   };
   renderFiles() {
@@ -90,7 +119,18 @@ class StudentData extends Component {
         <p>Add some files to see a demo of retrieving from the FileList</p>
       );
     }
-}
+  }
+
+  handleFiles = files => {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      // Use reader.result
+      console.log(reader.result);
+      let result = reader.result;
+    };
+    reader.readAsText(files[0]);
+  };
+
   render() {
     let modal;
 
@@ -102,62 +142,79 @@ class StudentData extends Component {
               <EuiModalHeaderTitle>Add</EuiModalHeaderTitle>
             </EuiModalHeader>
             <EuiModalBody>
-                <h4>Add via CSV!!</h4>
-            <Fragment>
+              <h4>Add via CSV!!</h4>
+              <Fragment>
                 <EuiFlexGroup>
-                <EuiFlexItem grow={2}>
-                    <EuiFilePicker
-                        id="asdf2"
-                        multiple
-                        initialPromptText="Select or drag and drop multiple files"
-                        onChange={files => {
+                  <EuiFlexItem grow={2}>
+                    <ReactFileReader
+                      handleFiles={this.handleFiles}
+                      fileTypes={".csv"}
+                    >
+                      {/* <button className="btn">Upload your CSV</button> */}
+                      <EuiButton
+                        className="btn"
+                        size="s"
+                        fill
+                        // onClick={() => window.alert("Button clicked")}
+                      >
+                        Upload your CSV
+                      </EuiButton>
+                    </ReactFileReader>
+
+                    {/* <EuiFilePicker
+                      id="asdf2"
+                      multiple
+                      initialPromptText="Select or drag and drop multiple files"
+                      onChange={files => {
                         this.onChange(files);
-                        }}
-                        display={this.state.large ? 'large' : 'default'}
-                    />
+                      }}
+                      display={this.state.large ? "large" : "default"}
+                    /> */}
                     <EuiSpacer />
-                </EuiFlexItem>
-                <EuiFlexItem>
-                    <EuiText>
-                    <h3>Files attached</h3>
-                    {this.renderFiles()}
-                    </EuiText>
-                </EuiFlexItem>
+                  </EuiFlexItem>
+                  <EuiFlexItem>
+                    {/* <EuiText>
+                      <h3>Files attached</h3>
+                      {this.renderFiles()}
+                    </EuiText> */}
+                  </EuiFlexItem>
                 </EuiFlexGroup>
-            </Fragment>
-         
-            <hr/>
+              </Fragment>
 
-            <h4>Add Manualy!!</h4>
-            <div >
+              <hr />
+
+              <h4>Add Manualy!!</h4>
+              <div>
                 <EuiFieldText
-                    placeholder="Username"
-                    value={this.state.value}
-                    onChange={this.onChange}
-                    aria-label="Use aria labels when no actual label is in use"
-                    />
-                    <EuiSpacer/>
+                  placeholder="Username"
+                  value={this.state.value}
+                  onChange={this.onChange}
+                  aria-label="Use aria labels when no actual label is in use"
+                />
+                <EuiSpacer />
                 <EuiFieldText
-                    placeholder="Email"
-                    value={this.state.value}
-                    onChange={this.onChange}
-                    aria-label="Use aria labels when no actual label is in use"
-                    />
-                    <EuiSpacer/>
+                  placeholder="Email"
+                  value={this.state.value}
+                  onChange={this.onChange}
+                  aria-label="Use aria labels when no actual label is in use"
+                />
+                <EuiSpacer />
                 <EuiFieldPassword
-                    placeholder="Password"
-                    value={this.state.value}
-                    onChange={this.onChange}
-                    aria-label="Use aria labels when no actual label is in use"
-                    />
-                    <EuiSpacer/>
+                  placeholder="Password"
+                  value={this.state.value}
+                  onChange={this.onChange}
+                  aria-label="Use aria labels when no actual label is in use"
+                />
+                <EuiSpacer />
 
-                 <EuiButton size='s' fill onClick={() => window.alert('Button clicked')}>
-                Upload
+                <EuiButton
+                  size="s"
+                  fill
+                  onClick={() => window.alert("Button clicked")}
+                >
+                  Upload
                 </EuiButton>
-            </div>
-            
-            
+              </div>
             </EuiModalBody>
             <EuiModalFooter>
               <EuiButtonEmpty onClick={this.closeModal}>Cancel</EuiButtonEmpty>
@@ -171,7 +228,7 @@ class StudentData extends Component {
       );
     }
     return (
-      <div className=''>      
+      <div className="">
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
@@ -179,16 +236,18 @@ class StudentData extends Component {
             </EuiTitle>
           </EuiPageContentHeaderSection>
           <EuiPageContentHeaderSection>
-            <EuiButton size='s' onClick={this.showModal}>Add</EuiButton>
-              {modal}
+            <EuiButton size="s" onClick={this.showModal}>
+              Add
+            </EuiButton>
+            {modal}
           </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
         <EuiPageContent>
           <EuiPageContentBody>
-            <DataTable fieldName={fieldName} data={data} />   
+            <DataTable fieldName={fieldName} data={data} />
           </EuiPageContentBody>
         </EuiPageContent>
-    </div>
+      </div>
     );
   }
 }
