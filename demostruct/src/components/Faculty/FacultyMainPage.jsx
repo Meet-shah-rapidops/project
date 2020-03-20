@@ -27,6 +27,14 @@ export class FacultyMainPage extends Component {
                             <Switch>
                                 <Route exact path="/facultyDashboard" component={FacultyDashboard} />
                                 <Route exact path="/facultyDashboard/subjects" component={FacultySubjects} />
+                                <Route exact path="/facultyDashboard/profile" component={FacultyProfile} />
+                                <Route exact path="/facultyDashboard/editprofile" component={FacultyEditProfile} />
+                                <Route exact path="/facultyDashboard/assignment" component={Assignmet} />
+                                <Route exact path="/facultyDashboard/viewassignment" component={ViewAssignment} />
+                                <Route exact path="/facultyDashboard/addassignment" component={AddAssignment} />
+                                <Route exact path="/facultyDashboard/addtest" component={AddTest} />
+                                <Route exact path="/facultyDashboard/forum" component={Forum} />                                <Route exact path="/facultyDashboard/profile" component={FacultyProfile} />
+
                             </Switch>
                         
                     </EuiPageBody>
