@@ -1,0 +1,91 @@
+.viewAll {
+  float: right;
+  margin: 10px 30px;
+}
+
+.scrollable {
+  overflow-x: scroll;
+  height: 110px;
+}
+
+.subjectCard {
+  width: 500px;
+}
+
+.subjectCard .subjectCardHeader {
+  height: 100px;
+  color: white;
+  line-height: 100px;
+  background-color: royalblue;
+}
+
+.deadlineCard {
+  width: 500px;
+  height: 280px;
+}
+
+.deadlineCard .deadlineCardHeader {
+  height: 100px;
+  color: white;
+  line-height: 100px;
+  background-color: #d30c0c;
+}
+
+.assignmentCard {
+  width: 500px;
+}
+
+.assignmentCard .assignmentCardHeader {
+  height: 100px;
+  color: white;
+  line-height: 100px;
+  background-color: #053e6d;
+}
+
+.testCard {
+  width: 900px;
+}
+
+.testCard .testCardHeader {
+  height: 100px;
+  color: white;
+  line-height: 100px;
+  background-color: purple;
+}
+
+.subjectsPanel {
+  width: 250px;
+  height: 150px;
+  line-height: 150px;
+  font-size: 30px;
+  padding: 0px;
+  color: white;
+  background: #3b3b90;
+  background: linear-gradient(240deg, #3b3b90 0%, #00d4ff 100%);
+}
+
+.profileCard {
+  width: 300px;
+  height: 300px;
+}
+
+.profileCard .profileCardHeader {
+  background: #3b3b90;
+}
+
+.profileCard .profileCardHeader h3 {
+  color: white;
+}
+
+.profileCard .profileCardHeader .profilePic {
+  width: 150px;
+  height: 150px;
+  font-size: 50px;
+  line-height: 150px;
+}
+
+.profileCard .size {
+  width: 90px;
+  margin: 5px 0px;
+}
+/*# sourceMappingURL=faculty.css.map */

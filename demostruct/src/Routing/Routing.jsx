@@ -5,10 +5,9 @@ import LoginPageComponent from "../components/Login";
 // import AdminDashboardComponent from '../components/AdminComponents/AdminDashboradComponent';
 // import StudentTableComponent from '../components/AdminComponents/StudentTableComponent';
 // import SubjectsComponent from '../components/AdminComponents/SubjectsComponent';
-import AdminRoutingComponent from "../components/AdminComponents/AdminRouting";
-import RegisterComponent from "../components/Register";
-import ForgetPassword from "../components/ForgetPassword";
-import ChangePassword from "../components/ChangePassword";
+// import AdminRoutingComponent from '../components/AdminComponents/AdminRoutingComponent';
+import RegisterComponent from '../components/RegisterComponent';
+import FacultyMainPage from '../components/Faculty/FacultyMainPage'
 
 const Routing = () => {
   return (
@@ -24,8 +23,12 @@ const Routing = () => {
         <RegisterComponent />
       </Route>
 
-      <Route exact path="/forget">
-        <ForgetPassword />
+      {/* <AdminRoutingComponent /> */}
+      <FacultyMainPage/>
+
+      {/* Admin Routing
+      <Route exact path="/adminDashboard">
+        <AdminDashboardComponent />
       </Route>
       <Route exact path="/changepassword">
         <ChangePassword />
