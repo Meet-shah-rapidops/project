@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import PostData from "../services/PostData";
 import {
   EuiForm,
   EuiFormRow,
@@ -24,29 +25,36 @@ class LoginPageComponent extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      redirect: false
     };
   }
 
-  // onChange = e => {
-  //   this.setState({
-  //     value: e.target.value
-  //   });
-  // };
-
   login = () => {
     console.warn(this.state);
-    fetch(
-      "https://assignment-system.herokuapp.com/user/api/admin/login" +
-        this.state.name
-    ).then(data => {
-      data.json().then(resp => {
-        console.warn("resp", resp);
+    PostData("login", this.state)
+      .then(result => {
+        let responseJSON = result;
+        console.log(responseJSON);
+        if (result.message) {
+          localStorage.setItem("login", JSON.stringify(responseJSON));
+          console.log(result);
+          this.setState({ redirect: true });
+        } else if (result.error) {
+          console.log(result.error);
+        }
+      })
+      .catch(error => {
+        alert(error.error);
       });
-    });
   };
 
   render() {
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to="/adminDashboard" />;
+    }
     return (
       <div className="LoginPage">
         <EuiPage>
@@ -67,7 +75,6 @@ class LoginPageComponent extends Component {
                   <EuiFormRow
                     label="Email"
                     value={this.state.value}
-                    // onChange={this.onChange}
                     name="email"
                     onChange={event =>
                       this.setState({ email: event.target.value })
@@ -95,7 +102,6 @@ class LoginPageComponent extends Component {
                     </Link>
                   </EuiFormRow>
 
-                  {/* <Link to="/adminDashboard"> */}
                   <EuiButton
                     type="submit"
                     fill
@@ -105,7 +111,6 @@ class LoginPageComponent extends Component {
                   >
                     Login
                   </EuiButton>
-                  {/* </Link> */}
 
                   <EuiFlexGroup id="register">
                     <EuiFormLabel id="label">Not registered?</EuiFormLabel>

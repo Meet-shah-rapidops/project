@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import PostData from "../services/PostData";
 
 import {
@@ -7,29 +7,24 @@ import {
   EuiFormRow,
   EuiButton,
   EuiFieldText,
-  EuiFieldPassword,
   EuiPage,
   EuiPageBody,
   EuiPageContent,
   EuiPageContentBody,
   EuiPageContentHeader,
   EuiPageContentHeaderSection,
-  EuiTitle,
-  EuiLink,
-  EuiFlexGroup,
-  EuiFormLabel
+  EuiTitle
 } from "@elastic/eui";
 import { EuiSpacer } from "@elastic/eui";
 
-class RegisterComponent extends Component {
+class CheckOtp extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      collegeName: "",
+      otp: "",
       email: "",
-      password: "",
-      confirmPassword: "",
+      forEmailVerify: "y",
       redirect: false
     };
   }
@@ -40,13 +35,31 @@ class RegisterComponent extends Component {
   //   });
   // };
 
-  register = () => {
+  checkOtp = () => {
     console.warn(this.state);
-    PostData("register", this.state)
+    PostData("checkOtp", this.state)
       .then(result => {
         let responseJSON = result;
         console.log(responseJSON);
-        this.setState({ redirect: true });
+        if (result.message) {
+          console.log(result);
+          this.setState({ redirect: true });
+        } else if (result.error) {
+          console.log(result.error);
+        }
+      })
+      .catch(error => {
+        alert(error.error);
+      });
+  };
+
+  resendOtp = () => {
+    console.warn(this.state);
+    PostData("resendOtp", this.state)
+      .then(result => {
+        let responseJSON = result;
+        console.log(responseJSON);
+        // this.setState({ redirect: true });
       })
       .catch(error => {
         alert(error.error);
@@ -57,11 +70,10 @@ class RegisterComponent extends Component {
     const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to="/checkotp" />;
+      return <Redirect to="/login" />;
     }
-
     return (
-      <div className="RegisterPage">
+      <div className="">
         <EuiPage>
           <EuiPageBody>
             <EuiPageContent
@@ -71,20 +83,20 @@ class RegisterComponent extends Component {
               <EuiPageContentHeader>
                 <EuiPageContentHeaderSection>
                   <EuiTitle>
-                    <h2>Sign Up</h2>
+                    <h2>Check-Otp</h2>
                   </EuiTitle>
                 </EuiPageContentHeaderSection>
               </EuiPageContentHeader>
               <EuiPageContentBody>
                 <EuiForm style={{ width: 350 }}>
                   <EuiFormRow
-                    label="College-Name"
+                    label="Enter-Otp"
                     value={this.state.value}
                     onChange={event =>
-                      this.setState({ collegeName: event.target.value })
+                      this.setState({ otp: event.target.value })
                     }
                   >
-                    <EuiFieldText icon="user" />
+                    <EuiFieldText />
                   </EuiFormRow>
 
                   <EuiFormRow
@@ -97,45 +109,36 @@ class RegisterComponent extends Component {
                     <EuiFieldText icon="email" />
                   </EuiFormRow>
 
-                  <EuiFormRow
-                    label="Password"
-                    helpText="Must include one number and one symbol"
-                    value={this.state.value}
-                    onChange={event =>
-                      this.setState({ password: event.target.value })
-                    }
-                  >
-                    <EuiFieldPassword icon="lock" />
+                  <EuiFormRow label="forEmailVerify">
+                    <EuiFieldText
+                      icon="email"
+                      value="Y"
+                      placeholder="Y"
+                      readOnly
+                    />
                   </EuiFormRow>
-                  <EuiFormRow
-                    label="Confirm-Password"
-                    helpText="Must include one number and one symbol"
-                    value={this.state.value}
-                    onChange={event =>
-                      this.setState({ confirmPassword: event.target.value })
-                    }
-                  >
-                    <EuiFieldPassword icon="lock" />
-                  </EuiFormRow>
+
                   <EuiSpacer />
-                  {/* <Link to="/login"> */}
+
                   <EuiButton
                     type="submit"
                     fill
                     onClick={() => {
-                      this.register();
+                      this.checkOtp();
                     }}
                   >
-                    Register
+                    Send
                   </EuiButton>
-                  {/* </Link> */}
 
-                  <EuiFlexGroup id="login">
-                    <EuiFormLabel id="label">Already registered?</EuiFormLabel>
-                    <Link to="/login">
-                      <EuiLink id="link">Login</EuiLink>
-                    </Link>
-                  </EuiFlexGroup>
+                  <EuiButton
+                    type="submit"
+                    fill
+                    onClick={() => {
+                      this.resendOtp();
+                    }}
+                  >
+                    Resend-otp
+                  </EuiButton>
                 </EuiForm>
               </EuiPageContentBody>
             </EuiPageContent>
@@ -146,4 +149,4 @@ class RegisterComponent extends Component {
   }
 }
 
-export default RegisterComponent;
+export default CheckOtp;

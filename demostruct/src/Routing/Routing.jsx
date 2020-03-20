@@ -9,7 +9,8 @@ import AdminRoutingComponent from "../components/AdminComponents/AdminRouting";
 import RegisterComponent from "../components/Register";
 import ForgetPassword from "../components/ForgetPassword";
 import ChangePassword from "../components/ChangePassword";
-import Forums from "../components/Forum";
+import CheckOtp from "../components/CheckOtp";
+import ResendOtp from "../components/ResendOtp";
 
 const Routing = () => {
   return (
@@ -31,8 +32,11 @@ const Routing = () => {
       <Route exact path="/changepassword">
         <ChangePassword />
       </Route>
-      <Route exact path="/forum">
-        <Forums />
+      <Route exact path="/checkotp">
+        <CheckOtp />
+      </Route>
+      <Route exact path="/resendotp">
+        <ResendOtp />
       </Route>
 
       <AdminRoutingComponent />

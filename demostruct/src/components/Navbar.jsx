@@ -20,7 +20,8 @@ class NavbarComponent extends Component {
     super(props);
 
     this.state = {
-      isPopoverOpen: false
+      isPopoverOpen: false,
+      redirect: false
     };
   }
 
@@ -31,7 +32,8 @@ class NavbarComponent extends Component {
     this.setState({ isModalVisible: false });
   };
   confirmBox = () => {
-    redirect: "/";
+    localStorage.clear();
+    this.setState({ redirect: true });
   };
 
   onButtonClick() {
@@ -47,6 +49,11 @@ class NavbarComponent extends Component {
   }
 
   render() {
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to="/login" />;
+    }
     const button = (
       <EuiAvatar
         size="l"
