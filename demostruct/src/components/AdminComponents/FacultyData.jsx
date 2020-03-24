@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import DataTable from './DataTable';
+import { Link, Redirect } from "react-router-dom";
+
 import {
   EuiButton,
   EuiButtonEmpty,
@@ -54,6 +56,8 @@ class FacultyData extends Component {
       isModalVisible: false,
       files: {},
       large: true,
+      redirect: false
+
     };
 
     this.closeModal = this.closeModal.bind(this);
@@ -91,7 +95,22 @@ class FacultyData extends Component {
       );
     }
 }
+
+componentWillMount(){
+  if(localStorage.getItem("login")){
+    console.log("login successfull")
+  }
+  else{
+    this.setState({redirect:true});
+  }
+}
+
   render() {
+
+    if (this.state.redirect) {
+      return <Redirect to="/login" />;
+    }
+    
     let modal;
 
     if (this.state.isModalVisible) {
@@ -170,6 +189,9 @@ class FacultyData extends Component {
         </EuiOverlayMask>
       );
     }
+
+    
+  
     return (
       <div className=''>      
         <EuiPageContentHeader>

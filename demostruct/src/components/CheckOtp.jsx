@@ -46,6 +46,7 @@ class CheckOtp extends Component {
           this.setState({ redirect: true });
         } else if (result.error) {
           console.log(result.error);
+          alert(result.error);
         }
       })
       .catch(error => {

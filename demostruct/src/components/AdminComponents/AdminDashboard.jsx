@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { FaUsers, FaUserTie, FaBook } from "react-icons/fa";
 import {
   EuiPageContentBody,
@@ -13,7 +13,8 @@ class AdminDashboardComponent extends Component {
     super(props);
 
     this.state = {
-      isPopoverOpen: false
+      isPopoverOpen: false,
+      redirect: false
     };
   }
 
@@ -29,7 +30,21 @@ class AdminDashboardComponent extends Component {
     });
   }
 
+
+  componentWillMount(){
+    if(localStorage.getItem("login")){
+      console.log("login successfull")
+    }
+    else{
+      this.setState({redirect:true});
+    }
+  }
   render() {
+
+
+    if (this.state.redirect) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div>
 

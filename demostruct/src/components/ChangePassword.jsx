@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import PostData from "../services/PostData";
+
 import {
   EuiForm,
   EuiFormRow,
@@ -11,7 +13,8 @@ import {
   EuiPageContentBody,
   EuiPageContentHeader,
   EuiPageContentHeaderSection,
-  EuiTitle
+  EuiTitle,
+  EuiFieldText
 } from "@elastic/eui";
 import { EuiSpacer } from "@elastic/eui";
 
@@ -20,17 +23,38 @@ class ChangePassword extends Component {
     super(props);
 
     this.state = {
-      value: ""
+      email:'',
+      oldPassword:'',
+      newPassword:'',
+      confirmPassword:''
     };
   }
 
-  onChange = e => {
-    this.setState({
-      value: e.target.value
-    });
+  changePassword = () => {
+    console.warn(this.state);
+    PostData("changePassword", this.state)
+      .then(result => {
+        let responseJSON = result;
+        console.log(responseJSON);
+        if (result.message) {
+          console.log(result);
+          this.setState({ redirect: true });
+        } else if (result.error) {
+          console.log(result.error);
+          alert(result.error);
+        }
+      })
+      .catch(error => {
+        alert(error.error);
+      });
   };
 
   render() {
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div
         className="changepasswordpage text-center"
@@ -51,11 +75,25 @@ class ChangePassword extends Component {
               </EuiPageContentHeader>
               <EuiPageContentBody>
                 <EuiForm style={{ width: 350 }}>
+
+                <EuiFormRow
+                    label="Email"
+                    name='email'
+                    value={this.state.value}
+                    onChange={event =>
+                      this.setState({ email: event.target.value })
+                    }
+                  >
+                    <EuiFieldText icon="email" />
+                  </EuiFormRow>
+
                   <EuiFormRow
                     label="Current Password"
                     helpText="Must include one number and one symbol"
                     value={this.state.value}
-                    onChange={this.onChange}
+                    onChange={event =>
+                      this.setState({ oldPassword: event.target.value })
+                    }
                   >
                     <EuiFieldPassword icon="lock" />
                   </EuiFormRow>
@@ -64,7 +102,9 @@ class ChangePassword extends Component {
                     label="New Password"
                     helpText="Must include one number and one symbol"
                     value={this.state.value}
-                    onChange={this.onChange}
+                    onChange={event =>
+                      this.setState({ newPassword: event.target.value })
+                    }
                   >
                     <EuiFieldPassword icon="lock" />
                   </EuiFormRow>
@@ -73,17 +113,17 @@ class ChangePassword extends Component {
                     label="Confirm Password"
                     helpText="Must include one number and one symbol"
                     value={this.state.value}
-                    onChange={this.onChange}
+                    onChange={event =>
+                      this.setState({ confirmPassword: event.target.value })
+                    }
                   >
                     <EuiFieldPassword icon="lock" />
                   </EuiFormRow>
 
                   <EuiSpacer />
-                  <Link to="/login">
-                    <EuiButton type="submit" fill>
-                      send
+                    <EuiButton type="submit" fill  onClick={() => {this.changePassword();}}>
+                    Change-Password
                     </EuiButton>
-                  </Link>
                 </EuiForm>
               </EuiPageContentBody>
             </EuiPageContent>

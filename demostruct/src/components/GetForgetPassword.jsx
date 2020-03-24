@@ -16,31 +16,45 @@ import {
   EuiTitle
 } from "@elastic/eui";
 import { EuiSpacer } from "@elastic/eui";
-export class ResendOtp extends Component {
+
+class GetForgetPassword extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: "",
-      forEmailVerify: "y",
       redirect: false
     };
   }
 
-  // onChange = e => {
-  //   this.setState({
-  //     value: e.target.value
-  //   });
-  // };
+  getForgotPasswordOtp = () => {
+    console.warn(this.state);
+    PostData("getForgotPasswordOtp", this.state)
+      .then(result => {
+        let responseJSON = result;
+        console.log(responseJSON);
+        if (result.message) {
+          console.log(result);
+          this.setState({ redirect: true });
+        } else if (result.error) {
+          console.log(result.error);
+          alert(result.error);
+
+        }
+      })
+      .catch(error => {
+        alert(error.error);
+      });
+  };
 
   render() {
     const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to="/login" />;
+      return <Redirect to="/forgetcheckotp" />;
     }
     return (
-      <div>
+      <div className="forgetpage text-center" style={{ marginTop: "10%" }}>
         <EuiPage>
           <EuiPageBody>
             <EuiPageContent
@@ -49,8 +63,8 @@ export class ResendOtp extends Component {
             >
               <EuiPageContentHeader>
                 <EuiPageContentHeaderSection>
-                  <EuiTitle>
-                    <h2>Check-Otp</h2>
+                  <EuiTitle style={{ marginLeft: "7vh" }}>
+                    <h2>Forget Password</h2>
                   </EuiTitle>
                 </EuiPageContentHeaderSection>
               </EuiPageContentHeader>
@@ -58,34 +72,19 @@ export class ResendOtp extends Component {
                 <EuiForm style={{ width: 350 }}>
                   <EuiFormRow
                     label="Email"
+                    name='email'
                     value={this.state.value}
                     onChange={event =>
                       this.setState({ email: event.target.value })
-                    }
-                  >
+                    }>
                     <EuiFieldText icon="email" />
                   </EuiFormRow>
-
-                  <EuiFormRow label="forEmailVerify">
-                    <EuiFieldText
-                      icon="email"
-                      value="Y"
-                      placeholder="Y"
-                      readOnly
-                    />
-                  </EuiFormRow>
-
                   <EuiSpacer />
-
-                  <EuiButton
-                    type="submit"
-                    fill
-                    onClick={() => {
-                      this.checkOtp();
-                    }}
-                  >
-                    Send
-                  </EuiButton>
+                  {/* <Link to="/login"> */}
+                    <EuiButton type="submit" fill onClick={() => {this.getForgotPasswordOtp();}}>
+                      send
+                    </EuiButton>
+                  {/* </Link> */}
                 </EuiForm>
               </EuiPageContentBody>
             </EuiPageContent>
@@ -96,4 +95,4 @@ export class ResendOtp extends Component {
   }
 }
 
-export default ResendOtp;
+export default GetForgetPassword;

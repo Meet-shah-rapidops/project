@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import { Link, Redirect } from "react-router-dom";
+
 import DataTable from './DataTable';
 import {
   EuiButton,
@@ -91,7 +93,18 @@ class SubjectData extends Component {
       );
     }
 }
+componentWillMount(){
+  if(localStorage.getItem("login")){
+    console.log("login successfull")
+  }
+  else{
+    this.setState({redirect:true});
+  }
+}
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/login" />;
+    }
     let modal;
 
     if (this.state.isModalVisible) {

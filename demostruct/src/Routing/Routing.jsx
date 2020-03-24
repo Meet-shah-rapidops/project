@@ -2,15 +2,13 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import LoginPageComponent from "../components/Login";
-// import AdminDashboardComponent from '../components/AdminComponents/AdminDashboradComponent';
-// import StudentTableComponent from '../components/AdminComponents/StudentTableComponent';
-// import SubjectsComponent from '../components/AdminComponents/SubjectsComponent';
 import AdminRoutingComponent from "../components/AdminComponents/AdminRouting";
 import RegisterComponent from "../components/Register";
-import ForgetPassword from "../components/ForgetPassword";
+import GetForgetPassword from "../components/GetForgetPassword";
 import ChangePassword from "../components/ChangePassword";
 import CheckOtp from "../components/CheckOtp";
-import ResendOtp from "../components/ResendOtp";
+import ForgetPassword from "../components/ForgetPassword";
+import ForgetCheckOtp from "../components/ForgetCheckOtp";
 
 const Routing = () => {
   return (
@@ -26,6 +24,9 @@ const Routing = () => {
         <RegisterComponent />
       </Route>
 
+      <Route exact path="/getforget">
+        <GetForgetPassword />
+      </Route>
       <Route exact path="/forget">
         <ForgetPassword />
       </Route>
@@ -35,9 +36,10 @@ const Routing = () => {
       <Route exact path="/checkotp">
         <CheckOtp />
       </Route>
-      <Route exact path="/resendotp">
-        <ResendOtp />
+      <Route exact path="/forgetcheckotp">
+        <ForgetCheckOtp />
       </Route>
+     
 
       <AdminRoutingComponent />
     </Switch>

@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from "react";
+import { Link, Redirect } from "react-router-dom";
+
 import ReactFileReader from "react-file-reader";
 import DataTable from "./DataTable";
 import {
@@ -131,7 +133,21 @@ class StudentData extends Component {
     reader.readAsText(files[0]);
   };
 
+  componentWillMount(){
+    if(localStorage.getItem("login")){
+      console.log("login successfull")
+    }
+    else{
+      this.setState({redirect:true});
+    }
+  }
+
   render() {
+
+    if (this.state.redirect) {
+      return <Redirect to="/login" />;
+    }
+    
     let modal;
 
     if (this.state.isModalVisible) {

@@ -42,6 +42,7 @@ class LoginPageComponent extends Component {
           this.setState({ redirect: true });
         } else if (result.error) {
           console.log(result.error);
+          alert(result.error);
         }
       })
       .catch(error => {
@@ -53,6 +54,10 @@ class LoginPageComponent extends Component {
     const { redirect } = this.state;
 
     if (redirect) {
+      return <Redirect to="/adminDashboard" />;
+    }
+
+    if (localStorage.getItem("login")) {
       return <Redirect to="/adminDashboard" />;
     }
     return (
@@ -97,7 +102,7 @@ class LoginPageComponent extends Component {
                   </EuiFormRow>
 
                   <EuiFormRow id="forgot">
-                    <Link to="/forget">
+                    <Link to="/getforget">
                       <EuiLink id="link">Forgot password?</EuiLink>
                     </Link>
                   </EuiFormRow>

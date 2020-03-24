@@ -134,7 +134,7 @@ class NavbarComponent extends Component {
 
                 <EuiFormRow label="" id="asdf2">
                   <Link to="/changepassword">
-                    <EuiButton> Change Password</EuiButton>
+                    <EuiButton>Change Password</EuiButton>
                   </Link>
                 </EuiFormRow>
 

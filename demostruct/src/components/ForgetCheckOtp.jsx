@@ -7,33 +7,37 @@ import {
   EuiFormRow,
   EuiButton,
   EuiFieldText,
-  EuiFieldPassword,
   EuiPage,
   EuiPageBody,
   EuiPageContent,
   EuiPageContentBody,
   EuiPageContentHeader,
   EuiPageContentHeaderSection,
-  EuiTitle,
- 
+  EuiTitle
 } from "@elastic/eui";
 import { EuiSpacer } from "@elastic/eui";
 
-class ForgetPassword extends Component {
+class ForgetCheckOtp extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      otp: "",
       email: "",
-      newPassword: "",
-      confirmPassword: "",
+      forEmailVerify: "n",
       redirect: false
     };
   }
 
-  forgotPassword = () => {
+  // onChange = e => {
+  //   this.setState({
+  //     value: e.target.value
+  //   });
+  // };
+
+  checkOtp = () => {
     console.warn(this.state);
-    PostData("forgotPassword", this.state)
+    PostData("checkOtp", this.state)
       .then(result => {
         let responseJSON = result;
         console.log(responseJSON);
@@ -50,13 +54,25 @@ class ForgetPassword extends Component {
       });
   };
 
+  resendOtp = () => {
+    console.warn(this.state);
+    PostData("resendOtp", this.state)
+      .then(result => {
+        let responseJSON = result;
+        console.log(responseJSON);
+        // this.setState({ redirect: true });
+      })
+      .catch(error => {
+        alert(error.error);
+      });
+  };
+
   render() {
     const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to="/login" />;
+      return <Redirect to="/forget" />;
     }
-
     return (
       <div className="">
         <EuiPage>
@@ -68,16 +84,24 @@ class ForgetPassword extends Component {
               <EuiPageContentHeader>
                 <EuiPageContentHeaderSection>
                   <EuiTitle>
-                    <h2>Change Password</h2>
+                    <h2>Check-Otp</h2>
                   </EuiTitle>
                 </EuiPageContentHeaderSection>
               </EuiPageContentHeader>
               <EuiPageContentBody>
                 <EuiForm style={{ width: 350 }}>
+                  <EuiFormRow
+                    label="Enter-Otp"
+                    value={this.state.value}
+                    onChange={event =>
+                      this.setState({ otp: event.target.value })
+                    }
+                  >
+                    <EuiFieldText />
+                  </EuiFormRow>
 
                   <EuiFormRow
                     label="Email"
-                    name='email'
                     value={this.state.value}
                     onChange={event =>
                       this.setState({ email: event.target.value })
@@ -86,37 +110,35 @@ class ForgetPassword extends Component {
                     <EuiFieldText icon="email" />
                   </EuiFormRow>
 
-                  <EuiFormRow
-                    label="New-Password"
-                    name='newPassword'
-                    helpText="Must include one number and one symbol"
-                    value={this.state.value}
-                    onChange={event =>
-                      this.setState({ newPassword: event.target.value })
-                    }
-                  >
-                    <EuiFieldPassword icon="lock" />
+                  <EuiFormRow label="forEmailVerify">
+                    <EuiFieldText
+                      icon="email"
+                      value="n"
+                      placeholder="N"
+                      readOnly
+                    />
                   </EuiFormRow>
-                  <EuiFormRow
-                    label="Confirm-Password"
-                    name='confirmPassword'
-                    helpText="Must include one number and one symbol"
-                    value={this.state.value}
-                    onChange={event =>
-                      this.setState({ confirmPassword: event.target.value })
-                    }
-                  >
-                    <EuiFieldPassword icon="lock" />
-                  </EuiFormRow>
+
                   <EuiSpacer />
+
                   <EuiButton
                     type="submit"
                     fill
                     onClick={() => {
-                      this.forgotPassword();
+                      this.checkOtp();
                     }}
                   >
-                    Change Password
+                    Send
+                  </EuiButton>
+
+                  <EuiButton
+                    type="submit"
+                    fill
+                    onClick={() => {
+                      this.resendOtp();
+                    }}
+                  >
+                    Resend-otp
                   </EuiButton>
                 </EuiForm>
               </EuiPageContentBody>
@@ -128,4 +150,4 @@ class ForgetPassword extends Component {
   }
 }
 
-export default ForgetPassword;
+export default ForgetCheckOtp;

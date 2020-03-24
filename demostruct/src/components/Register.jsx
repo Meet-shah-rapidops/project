@@ -34,19 +34,19 @@ class RegisterComponent extends Component {
     };
   }
 
-  // onChange = e => {
-  //   this.setState({
-  //     value: e.target.value
-  //   });
-  // };
-
   register = () => {
     console.warn(this.state);
     PostData("register", this.state)
       .then(result => {
         let responseJSON = result;
         console.log(responseJSON);
-        this.setState({ redirect: true });
+        if (result.message) {
+          console.log(result);
+          this.setState({ redirect: true });
+        } else if (result.error) {
+          console.log(result.error);
+          alert(result.error);
+        }
       })
       .catch(error => {
         alert(error.error);
@@ -89,6 +89,7 @@ class RegisterComponent extends Component {
 
                   <EuiFormRow
                     label="Email"
+                    name='email'
                     value={this.state.value}
                     onChange={event =>
                       this.setState({ email: event.target.value })
